@@ -1,9 +1,6 @@
 /*
  * @description: 输入一个int类型的，返回整数逆序后的字符串，例如：1234 -> '4321' 。要求递归，不能使用全局变量。输入函数只能掺入一个参数  
- * @author: JXY
  * @Date: 2019-07-09 09:24:50
- * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-07-09 10:15:53
  */
 // 解答方案一
 function getNumberReverseStr1(num) {
@@ -31,9 +28,6 @@ function getNumberReverseStr2(num) {
 
 /**
  * @description: 给定一个整数和一个目标值，找出和为两个目标值的两个数：nums:[2,7,11,15] target: 9 , resutl:[0,1]
- * @author: JXY
- * @param {type} 
- * @return: 
  * @Date: 2019-07-09 09:42:18
  */
 function getIndexsArr(nums,target) {
