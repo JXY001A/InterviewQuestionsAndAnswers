@@ -1,2 +1,2 @@
 # InterviewQuestionsAndAnswers
-积累的面试题目及答案（查漏补缺，完善只是体系）
+积累的面试题目及答案（查漏补缺，完善知识）
