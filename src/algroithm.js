@@ -45,3 +45,33 @@ function getIndexsArr(nums,target) {
     }
     return result;
 }
+
+/**
+ * @description 删除链表中的重复值
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+    /**
+     * Definition for singly-linked list.
+     * function ListNode(val) {
+     *     this.val = val;
+     *     this.next = null;
+     * }
+    */
+    if(!head) return head;
+
+    let newList = head;
+    let current = head.next;
+    while(current !== null) {
+        if(newList.val !== current.val) {
+            newList.next = current;
+            newList = newList.next;
+        }
+        current = current.next;
+    }
+
+    newList.next = null;
+
+    return head;
+};
