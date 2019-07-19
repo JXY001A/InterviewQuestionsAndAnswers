@@ -75,3 +75,28 @@ var deleteDuplicates = function(head) {
 
     return head;
 };
+
+
+/* 
+url有三种情况
+https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=&local_province_id=33
+https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=800&local_province_id=33
+https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=800,700&local_province_id=33
+
+匹配elective后的数字输出（写出你认为的最优解法）:
+
+[] || ['800'] || ['800','700'] 
+*/
+
+function getQueryApi(urls) {
+    function _getRegexByName(name) {
+        return new RegExp('[?&]'+name+'=([^?&#]*|&|$)')
+    }
+    function _getQueryByName(name) {
+        return urls.map((url)=>{
+            let matchResult = _getRegexByName(name).exec(url);
+            return matchResult[1]!== void 0 ? matchResult[1].split(','):'';
+        });
+    }
+    return _getQueryByName;
+}
