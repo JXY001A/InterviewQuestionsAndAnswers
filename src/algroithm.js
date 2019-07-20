@@ -100,3 +100,44 @@ function getQueryApi(urls) {
     }
     return _getQueryByName;
 }
+
+/* 
+    修改以下 print 函数，使之输出 0 到 99，或者 99 到 0
+    1、只能修改 setTimeout 到 Math.floor(Math.random() * 1000 的代码
+    2、不能修改 Math.floor(Math.random() * 1000
+    3、不能使用全局变量
+
+    function print(n){
+        setTimeout(() => {
+            console.log(n);
+        }, Math.floor(Math.random() * 1000));
+    }
+    for(var i = 0; i < 100; i++){
+        print(i);
+    }
+*/
+
+/*
+    解决方案 1： 将setTimeout方法修改为一个IFFE，并返回返回一个 emptyFunction
+    解决方案 2： setTimeout 并非直接受两个参数，后面也可以传递进入回调的参数，所以中间增加一个参数可以实际上替换，随机时间
+    总结：此题目还有另外一个方向就是出入的n,相当于隐式的左连接查询赋值操作，print 函数作用于内保存了新的变量n  
+*/
+/**
+ * @description:方案一 
+ * @Date: 2019-07-20 15:29:59
+ */
+function print(n){
+    setTimeout((() => {
+        console.log(n);
+        return ()=>void 0;
+    })(), Math.floor(Math.random() * 1000));
+}
+/**
+ * @description:方案二 
+ * @Date: 2019-07-20 15:29:59
+ */
+function print(n){
+    setTimeout(() => {
+        console.log(n);
+    }, n, Math.floor(Math.random() * 1000));
+}
