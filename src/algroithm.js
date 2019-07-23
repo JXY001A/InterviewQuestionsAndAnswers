@@ -141,3 +141,40 @@ function print(n){
         console.log(n);
     }, n, Math.floor(Math.random() * 1000));
 }
+
+
+/**
+ * @description:快速排序算法 
+ * @param {array} 
+ * @Date: 2019-07-23 23:50:24
+ */
+function quickSort (arr) {
+	function _sort(arr,left,right) {
+		if(left > right) 
+			return;
+        let i,j ,temp;
+        i=left,j=right,temp = arr[left]; 
+        while(i!=j) {
+            while(temp <= arr[j] && j>i) {
+                j-=1;
+            }
+            while(temp >= arr[i] && j>i) {
+                i+=1;
+            }
+
+            if(j>i) {
+                let t  = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            }
+        }
+
+        arr[left] = arr[i];
+        arr[i] = temp;
+        
+        _sort(arr,left,i-1);
+        _sort(arr,i+1,right);
+	}
+
+    _sort(arr,0,arr.length-1);
+}
