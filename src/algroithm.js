@@ -216,7 +216,6 @@ function insertSort(nums) {
     }
 }
 
-
 /**
  * @description: 插入排序优化 
  * @param {Array} 
@@ -232,5 +231,25 @@ function insertSortOptimization(nums) {
             tIndex = j;
         }
         nums[tIndex] = temp;
+    }
+}
+
+/**
+ * @description: 选择排序算法
+ * @param {type} 
+ * @Date: 2019-07-28 13:35:31
+ */
+function selectSort(nums) {
+    if (!Array.isArray(nums)) return;
+    for (let i = 0, len = nums.length; i < len; i += 1) {
+        let minIndex = i;
+        for (let j = i + 1, len = nums.length; j < len; j += 1) {
+            if (nums[minIndex] > nums[j])
+                minIndex = j;
+        }
+
+        let temp = nums[minIndex];
+        nums[minIndex] = nums[i];
+        nums[i] = temp;
     }
 }
