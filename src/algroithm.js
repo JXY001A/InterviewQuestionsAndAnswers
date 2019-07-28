@@ -199,3 +199,38 @@ function BubblingSort(nums) {
         }
     }
 }
+
+/**
+ * @description: 插入排序 
+ * @param {Array} 
+ * @Date: 2019-07-28 11:57:17
+ */
+function insertSort(nums) {
+    if (!Array.isArray(nums)) return;
+    for (let i = 1, len = nums.length; i < len; i += 1) {
+        for (let j = i; j > 0 && nums[j] < nums[j - 1]; j -= 1) {
+            temp = nums[j];
+            nums[j] = nums[j - 1];
+            nums[j - 1] = temp;
+        }
+    }
+}
+
+
+/**
+ * @description: 插入排序优化 
+ * @param {Array} 
+ * @Date: 2019-07-28 11:57:17
+ */
+function insertSortOptimization(nums) {
+    if (!Array.isArray(nums)) return;
+    for (let i = 1, len = nums.length; i < len; i += 1) {
+        let temp = nums[i];
+        let tIndex = i;
+        for (let j = i - 1; j >= 0 && temp < nums[j]; j -= 1) {
+            nums[tIndex] = nums[j];
+            tIndex = j;
+        }
+        nums[tIndex] = temp;
+    }
+}
