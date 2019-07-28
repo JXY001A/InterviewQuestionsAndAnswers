@@ -16,29 +16,29 @@ function getNumberReverseStr1(num) {
 // 解答方案二 （将arrNums 传递，意味着_recursion 方法可以分离）
 function getNumberReverseStr2(num) {
     if (typeof num !== 'number') return '';
-    
-    function _recursion(reverseStr,numsArr,index) {
+
+    function _recursion(reverseStr, numsArr, index) {
         if (index < 0) return reverseStr;
         return _recursion(reverseStr + numsArr[index], --index);
     }
 
     const numsArr = Array.from(num + '');
-    return _recursion('', numsArr ,numsArr.length - 1);
+    return _recursion('', numsArr, numsArr.length - 1);
 }
 
 /**
  * @description: 给定一个整数和一个目标值，找出和为两个目标值的两个数：nums:[2,7,11,15] target: 9 , resutl:[0,1]
  * @Date: 2019-07-09 09:42:18
  */
-function getIndexsArr(nums,target) {
-    if(!Array.isArray(nums) || typeof target !== 'number') return [];
-    let templete =  {};
+function getIndexsArr(nums, target) {
+    if (!Array.isArray(nums) || typeof target !== 'number') return [];
+    let templete = {};
     let result = [];
-    for(let i=0,len=nums.length;i<len;i+=1) {
-        if(templete[target-nums[i]] !== undefined) {
-            result.push(templete[target-nums[i]]);
+    for (let i = 0, len = nums.length; i < len; i += 1) {
+        if (templete[target - nums[i]] !== undefined) {
+            result.push(templete[target - nums[i]]);
             result.push(i);
-        }else{
+        } else {
             // 注意：是数值相加 ，不要写成了 templete[traget-nums[i]] = i; 这样就反了，永远不会相等了。
             templete[nums[i]] = i;
         }
@@ -51,20 +51,20 @@ function getIndexsArr(nums,target) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var deleteDuplicates = function(head) {
+var deleteDuplicates = function (head) {
     /**
      * Definition for singly-linked list.
      * function ListNode(val) {
      *     this.val = val;
      *     this.next = null;
      * }
-    */
-    if(!head) return head;
+     */
+    if (!head) return head;
 
     let newList = head;
     let current = head.next;
-    while(current !== null) {
-        if(newList.val !== current.val) {
+    while (current !== null) {
+        if (newList.val !== current.val) {
             newList.next = current;
             newList = newList.next;
         }
@@ -90,12 +90,13 @@ https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=800,700&local_pr
 
 function getQueryApi(urls) {
     function _getRegexByName(name) {
-        return new RegExp('[?&]'+name+'=([^?&#]*|&|$)')
+        return new RegExp('[?&]' + name + '=([^?&#]*|&|$)')
     }
+
     function _getQueryByName(name) {
-        return urls.map((url)=>{
+        return urls.map((url) => {
             let matchResult = _getRegexByName(name).exec(url);
-            return matchResult[1]!== void 0 ? matchResult[1].split(','):'';
+            return matchResult[1] !== void 0 ? matchResult[1].split(',') : '';
         });
     }
     return _getQueryByName;
@@ -126,17 +127,17 @@ function getQueryApi(urls) {
  * @description:方案一 
  * @Date: 2019-07-20 15:29:59
  */
-function print(n){
+function print(n) {
     setTimeout((() => {
         console.log(n);
-        return ()=>void 0;
+        return () => void 0;
     })(), Math.floor(Math.random() * 1000));
 }
 /**
  * @description:方案二 
  * @Date: 2019-07-20 15:29:59
  */
-function print(n){
+function print(n) {
     setTimeout(() => {
         console.log(n);
     }, n, Math.floor(Math.random() * 1000));
@@ -148,22 +149,22 @@ function print(n){
  * @param {array} 
  * @Date: 2019-07-23 23:50:24
  */
-function quickSort (arr) {
-	function _sort(arr,left,right) {
-		if(left > right) 
-			return;
-        let i,j ,temp;
-        i=left,j=right,temp = arr[left]; 
-        while(i!=j) {
-            while(temp <= arr[j] && j>i) {
-                j-=1;
+function quickSort(arr) {
+    function _sort(arr, left, right) {
+        if (left > right)
+            return;
+        let i, j, temp;
+        i = left, j = right, temp = arr[left];
+        while (i != j) {
+            while (temp <= arr[j] && j > i) {
+                j -= 1;
             }
-            while(temp >= arr[i] && j>i) {
-                i+=1;
+            while (temp >= arr[i] && j > i) {
+                i += 1;
             }
 
-            if(j>i) {
-                let t  = arr[i];
+            if (j > i) {
+                let t = arr[i];
                 arr[i] = arr[j];
                 arr[j] = t;
             }
@@ -171,12 +172,12 @@ function quickSort (arr) {
 
         arr[left] = arr[i];
         arr[i] = temp;
-        
-        _sort(arr,left,i-1);
-        _sort(arr,i+1,right);
-	}
 
-    _sort(arr,0,arr.length-1);
+        _sort(arr, left, i - 1);
+        _sort(arr, i + 1, right);
+    }
+
+    _sort(arr, 0, arr.length - 1);
 }
 
 
@@ -184,18 +185,17 @@ function quickSort (arr) {
  * @description: 冒泡排序算法 
  * @param {Array} 
  * @Date: 2019-07-28 11:35:05
-*/
+ */
 
 function BubblingSort(nums) {
-    if(!Array.isArray(nums)) return;
-    for(let i=0,len=nums.length;i<len;i+=1) {
-        for(let j=0,len=nums.length;j<len-i-1;j+=1) {
-            if(nums[j] > nums[j+1]) {
+    if (!Array.isArray(nums)) return;
+    for (let i = 0, len = nums.length; i < len; i += 1) {
+        for (let j = 0, len = nums.length; j < len - i - 1; j += 1) {
+            if (nums[j] > nums[j + 1]) {
                 let temp = nums[j];
-                nums[j] = nums[j+1];
-                nums[j+1] = temp;
+                nums[j] = nums[j + 1];
+                nums[j + 1] = temp;
             }
         }
     }
 }
-
