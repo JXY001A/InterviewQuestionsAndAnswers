@@ -178,3 +178,24 @@ function quickSort (arr) {
 
     _sort(arr,0,arr.length-1);
 }
+
+
+/**
+ * @description: 冒泡排序算法 
+ * @param {Array} 
+ * @Date: 2019-07-28 11:35:05
+*/
+
+function BubblingSort(nums) {
+    if(!Array.isArray(nums)) return;
+    for(let i=0,len=nums.length;i<len;i+=1) {
+        for(let j=0,len=nums.length;j<len-i-1;j+=1) {
+            if(nums[j] > nums[j+1]) {
+                let temp = nums[j];
+                nums[j] = nums[j+1];
+                nums[j+1] = temp;
+            }
+        }
+    }
+}
+
