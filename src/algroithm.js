@@ -238,7 +238,8 @@ function insertSortOptimization(nums) {
  * @description: 选择排序算法
  * @param {type} 
  * @Date: 2019-07-28 13:35:31
- */
+*/
+
 function selectSort(nums) {
     if (!Array.isArray(nums)) return;
     for (let i = 0, len = nums.length; i < len; i += 1) {
