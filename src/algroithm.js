@@ -236,9 +236,9 @@ function insertSortOptimization(nums) {
 
 /**
  * @description: 选择排序算法
- * @param {type} 
+ * @param {Array} 
  * @Date: 2019-07-28 13:35:31
-*/
+ */
 
 function selectSort(nums) {
     if (!Array.isArray(nums)) return;
@@ -253,4 +253,45 @@ function selectSort(nums) {
         nums[minIndex] = nums[i];
         nums[i] = temp;
     }
+}
+
+/**
+ * @description: 归并排序算法
+ * @param {Array} 
+ * @Date: 2019-07-29 14:56:49
+ */
+
+function mergeSort(nums) {
+    function _merge(arr, l, mid, r) {
+        let tempArr = arr.slice(l, r + 1);
+
+        let i = l,
+            j = mid + 1;
+        for (let t = l; t <= r; t += 1) {
+            if (i > mid) {
+                arr[t] = tempArr[j - l];
+                j += 1;
+            } else if (j > r) {
+                arr[t] = tempArr[i - l];
+                i += 1;
+            } else if (arr[i] > arr[j]) {
+                arr[t] = tempArr[j - l];
+                j += 1;
+            } else {
+                arr[t] = tempArr[i - l];
+                i += 1;
+            }
+        }
+    }
+
+    function _mergeSort(arr, l, r) {
+        if (l >= r) return;
+        const mid = Math.floor((l + r) / 2);
+        _mergeSort(nums, l, mid);
+        _mergeSort(nums, mid + 1, r);
+        _merge(nums, l, mid, r);
+    }
+
+    if (!Array.isArray(nums)) return void 0;
+    _mergeSort(nums, 0, nums.length - 1);
 }
