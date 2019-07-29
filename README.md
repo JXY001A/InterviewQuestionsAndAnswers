@@ -12,6 +12,7 @@
 8. [插入排序算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d585a6a2cf6d1b0c5cb0d3aa800fb8a1e2acd5eb/src/algroithm.js#L208)
 9. [插入排序算法优化](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d585a6a2cf6d1b0c5cb0d3aa800fb8a1e2acd5eb/src/algroithm.js#L225)
 10. [选择排序算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/216dfd305804e7ef4ff4aa98721f6547eb264f7d/src/algroithm.js#L242)
+11. [归并排序算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/66c81d40ed7ffe24b94c0a045a4f3db8350a105b/src/algroithm.js#L284)
 ## JavaScript 相关
 ## CSS 相关
 ## React
