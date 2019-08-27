@@ -295,3 +295,30 @@ function mergeSort(nums) {
     if (!Array.isArray(nums)) return void 0;
     _mergeSort(nums, 0, nums.length - 1);
 }
+
+
+/**
+ * @desc 字符串大写转小写
+ * @param {string} str
+ * @return {string}
+*/
+var toLowerCase = function(str) {
+    if(typeof str !== 'string' || str.length === 0) return str;
+    
+    var map = {};
+    // A~Z:65-90
+    // a~z:97-112
+    for(var i=65;i<=90;i+=1) {
+        map[String.fromCharCode(i)] = String.fromCharCode(i+32);
+    }
+    
+    return str
+        .split('')
+        .map((key)=>{
+            if(map[key]) {
+                return map[key];
+            }
+            return key;
+        })
+        .join('');
+};
