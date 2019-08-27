@@ -315,10 +315,7 @@ var toLowerCase = function(str) {
     return str
         .split('')
         .map((key)=>{
-            if(map[key]) {
-                return map[key];
-            }
-            return key;
+            return map[key] ? map[key] : key;
         })
         .join('');
 };
