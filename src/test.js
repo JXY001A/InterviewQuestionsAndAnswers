@@ -3,22 +3,24 @@
  * @author: JXY
  * @Date: 2019-08-28 12:33:14
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-28 13:32:42
+ * @LastEditTime: 2019-08-28 22:14:39
  */
 
- /**
- * @desc leetcode 买卖股票的最佳时机 II
- * @param {number[]} prices
- * @return {number}
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
  */
-var maxProfit = function(prices) {
-    let maxProfit = 0;
-    if(!Array.isArray(prices) || !prices.length) return maxProfit;
-    for(let i=0;i<prices.length-1;i+=1) {
-        if(prices[i]<prices[i+1]) {
-            maxProfit += prices[i+1] - prices[i];
+var intersect = function(nums1, nums2) {
+    let commons = [];
+    let maxLengthNums = nums1.length >= nums2.length ? nums1 : nums2;
+    let minLengthNums = nums1.length < nums2.length ? nums1 : nums2;
+    for(let i=0,len=maxLengthNums.length;i<len;i+=1) {
+        let index = minLengthNums.indexOf(maxLengthNums[i]);
+        if( index>= 0) {
+            commons.push(maxLengthNums[i]);
+            minLengthNums.splice(index,1);
         }
     }
-
-    return maxProfit;
+    return commons;
 };

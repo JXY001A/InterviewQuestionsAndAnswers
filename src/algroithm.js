@@ -356,3 +356,50 @@ var maxProfit = function(prices) {
 
     return maxProfit;
 };
+
+/**
+ * @desc leetcode 旋转数组
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate = function(nums, k) {
+    if(!Array.isArray(nums) || !nums.length ||  typeof k !== 'number' || k<=0) return;
+    for(let i=0;i<k;i+=1) {
+        let temp = nums.splice(nums.length-1,1);
+        nums.unshift(temp[0])
+    }
+};
+
+/**
+ * @desc leetcode 存在重复
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function(nums) {
+    if(!Array.isArray(nums)) return false;
+    const tempMap = {};
+    nums.forEach(key=>tempMap[key] = null);
+    return Object.keys(tempMap).length === nums.length;
+};
+
+/**
+ * @desc leetcode 两个数组的交集 II
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersect = function(nums1, nums2) {
+    let commons = [];
+    // 务必将 nums1, nums2 对应分配给 maxLengthNums,minLengthNums. 些 >= 目的是排除length 相等的时候 maxLengthNums ,minLengthNums 指向同一个数组的情况
+    let maxLengthNums = nums1.length >= nums2.length ? nums1 : nums2;
+    let minLengthNums = nums1.length < nums2.length ? nums1 : nums2;
+    for(let i=0,len=maxLengthNums.length;i<len;i+=1) {
+        let index = minLengthNums.indexOf(maxLengthNums[i]);
+        if( index>= 0) {
+            commons.push(maxLengthNums[i]);
+            minLengthNums.splice(index,1);
+        }
+    }
+    return commons;
+}
