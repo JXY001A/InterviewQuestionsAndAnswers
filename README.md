@@ -14,6 +14,8 @@
 10. [选择排序算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/216dfd305804e7ef4ff4aa98721f6547eb264f7d/src/algroithm.js#L242)
 11. [归并排序算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/66c81d40ed7ffe24b94c0a045a4f3db8350a105b/src/algroithm.js#L264)
 12. [字符串大写转小写算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d8f2761ff2bbe7db54445a06e38c7cf97c0061c7/src/algroithm.js#L305)
+13. [数组去重算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e9613de8566b1c631f0153dd238ee9f0009652c1/src/algroithm.js#L331)
+14. [leetcode 买卖股票的最佳时机 II](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e9613de8566b1c631f0153dd238ee9f0009652c1/src/algroithm.js#L348)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
