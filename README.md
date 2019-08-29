@@ -1,3 +1,11 @@
+<!--
+ * @description: 
+ * @author: JXY
+ * @Date: 2019-08-28 13:53:11
+ * @Email: JXY001a@aliyun.com
+ * @LastEditTime: 2019-08-28 13:53:11
+ -->
+
 # InterviewQuestionsAndAnswers
 积累的面试题目及答案（查漏补缺，完善知识体系）
 ***
@@ -17,6 +25,10 @@
 13. [数组去重算法](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e9613de8566b1c631f0153dd238ee9f0009652c1/src/algroithm.js#L331)
 14. [leetcode 买卖股票的最佳时机 II](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e9613de8566b1c631f0153dd238ee9f0009652c1/src/algroithm.js#L348)
 15. [最快生成堆算法-heapify](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e3220005e54140a9a93d123d4686a88819ff1576/src/maxHeap_heapify.js#L9)
+16. [leetcode 旋转数组](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L366)
+17. [leetcode 存在重复](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L379)
+18. [leetcode 两个数组的交集 II](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L392)
+19. [leetcode 加一](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L412)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
