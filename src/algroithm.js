@@ -403,3 +403,30 @@ var intersect = function(nums1, nums2) {
     }
     return commons;
 }
+
+/**
+ * @desc leetcode 加一
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function(digits) {
+    if(!digits.length) return digits;
+    
+    let isTen = false;
+    digits[digits.length-1] += 1;
+
+    for(let i=digits.length-1;i>=0;i-=1) {
+        if(digits[i] === 10) {
+            isTen = true;
+            digits[i] = 0;
+            if(digits[i-1]) digits[i-1] +=1;
+        }else{
+            isTen = false;
+            break;
+        }
+    } 
+    if(isTen) {
+        digits.unshift(1);
+    }
+    return digits;
+};
