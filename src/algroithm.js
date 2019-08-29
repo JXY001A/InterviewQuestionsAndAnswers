@@ -451,7 +451,7 @@ var moveZeroes1 = function(nums) {
         }
     }
 };
-// // 解法二 ，效率更高
+// 解法二 ，效率更高
 var moveZeroes2 = function(nums) {
     let zerocount = 0;
     for(let i=0;i<nums.length;i+=1) {
@@ -465,4 +465,80 @@ var moveZeroes2 = function(nums) {
     if(zerocount) {
         nums.push(...Array(zerocount).fill(0)) 
     }
+};
+
+/**
+ * @desc leetcode 两数之和
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    let tempMap = {};
+    for(let i=0,len=nums.length;i<len;i+=1) {
+        if(tempMap[target - nums[i]] !== void 0) {
+            return [tempMap[target - nums[i]],i];
+        }else{
+            tempMap[nums[i]] = i;
+        }
+    }
+};
+
+
+/**
+ * @desc leetcode 有效的数独
+ * @param {character[][]} board
+ * @return {boolean}
+ */
+var isValidSudoku = function(board) {
+    let tempMap = {};
+    const len = board.length;
+    for(let i=2;i<len;i+=3) {
+        for(let j=2;j<len;j+=3) {
+            for(let t=i;t>i-3;t-=1) {
+                for(let d = j; d>j-3;d-=1) {
+                     
+                    if(board[t][d] === '.') continue;
+
+                    if(tempMap[board[t][d]] === void 0) {
+                        tempMap[board[t][d]] = null;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+            tempMap = {};
+        }
+    }
+
+    tempMap = {};
+    for(let i=0;i<len;i+=1) {
+        for(let j=0;j<len;j+=1) {
+            if(board[i][j] === '.') continue;  
+
+            if(tempMap[board[i][j]] === void 0 ) {
+                tempMap[board[i][j]] = null;
+            }else{
+                return false;
+            }
+        }
+        tempMap={};
+    }
+
+    tempMap = {};
+
+    for(let i=0;i<len;i+=1) {
+        for(let j=0;j<len;j+=1) {
+            if(board[j][i] === '.') continue;  
+
+            if(tempMap[board[j][i]] === void 0 ) {
+                tempMap[board[j][i]] = null;
+            }else{
+                return false;
+            }
+        }
+        tempMap={};
+    }
+
+    return true;
 };
