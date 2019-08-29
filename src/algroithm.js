@@ -430,3 +430,39 @@ var plusOne = function(digits) {
     }
     return digits;
 };
+
+/**
+ *  @desc leetcode 移动零
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+
+// 解法一
+var moveZeroes1 = function(nums) {
+    let len = nums.length;
+    for(let i=0;i<len;i+=1) {
+        if(nums[i] === 0) {
+            for(let j=i+1;j<len;j+=1) {
+                nums[j-1] = nums[j];
+            }
+            // 将索引拉回到新替换上来的数字位置，否则会遗漏
+            i-=1;
+            nums[--len] = 0;
+        }
+    }
+};
+// // 解法二 ，效率更高
+var moveZeroes2 = function(nums) {
+    let zerocount = 0;
+    for(let i=0;i<nums.length;i+=1) {
+        if(nums[i] === 0) {
+            nums.splice(i,1);
+            // 将索引拉回到新替换上来的数字位置，否则会遗漏
+            i-=1;
+            zerocount+=1;
+        }
+    }
+    if(zerocount) {
+        nums.push(...Array(zerocount).fill(0)) 
+    }
+};
