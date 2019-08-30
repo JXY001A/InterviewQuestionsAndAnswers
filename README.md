@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-28 13:53:11
+ * @LastEditTime: 2019-08-30 09:10:47
  -->
 
 # InterviewQuestionsAndAnswers
@@ -29,6 +29,9 @@
 17. [leetcode 存在重复](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L379)
 18. [leetcode 两个数组的交集 II](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L392)
 19. [leetcode 加一](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2f635582d0ac0e6b54cfd405ff31bd7a484b734d/src/algroithm.js#L412)
+20. [leetcode 移动零解决方法一](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d0137a813ee7aff18033f6206ac76c279b7477f7/src/algroithm.js#L439)
+21. [leetcode 移动零解决方法二](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d0137a813ee7aff18033f6206ac76c279b7477f7/src/algroithm.js#L455)
+22. [leetcode 有效的数独](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d0137a813ee7aff18033f6206ac76c279b7477f7/src/algroithm.js#L493)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
