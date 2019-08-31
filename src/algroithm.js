@@ -565,3 +565,16 @@ var rotate = function(matrix) {
     }
     matrix.splice(0,len1);
 };
+
+/**
+ * @desc leecode 反转字符串
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    const len = s.length;
+    for(let i=len-1;i>=0;i-=1) {
+        s.push(s[i]);
+    }
+    s.splice(0,len);
+};
