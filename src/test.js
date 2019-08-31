@@ -3,25 +3,45 @@
  * @author: JXY
  * @Date: 2019-08-28 12:33:14
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-31 13:59:55
+ * @LastEditTime: 2019-08-31 18:18:32
  */
+
 /**
- * @param {number} x
+ * @param {string} s
  * @return {number}
  */
-var reverse = function(x) {
-    const min = -Math.pow(2,31);
-    const max = Math.pow(2,31)  - 1; 
-    const symbol = x>=0?1:-1;
-    x = (symbol * x) + '';
+var firstUniqChar = function(s) {
+    if(s.length===0) return -1;
+    let tempMap = {};
+    let chars = s.split('');
+    chars.forEach((chart,index)=>{
+        if(tempMap[chart] === void 0) {
+            tempMap[chart] = {
+                count : 1,
+                indexs:[index],
+            };
+        }else{
+            tempMap[chart].count+=1;
+            tempMap[chart].indexs.push(index);
+        }
+    });
 
-    if(x.length<=1) return x;
+    const onlyIndexs = [];
+    Object.values(tempMap).forEach((item,index)=>{
+        if(item.count === 1) {
+            onlyIndexs.push(item.indexs[0]);
+        }
+    });
+    const result = onlyIndexs.sort((a,b)=>a-b)[0];
+    return typeof result === 'number'? result : -1;
     
-    let nums = x.split('').reverse(); 
-    let zeroIndex = -1;
-    for(let i=0,len=nums.length;i<len && nums[i] == 0;i+=1) {
-        zeroIndex+=1;
+};
+
+var firstUniqChar = function(s) {
+    for(let i = 0; i < s.length; i++) {
+        if(s.indexOf(s[i]) === i && s.lastIndexOf(s[i]) === i) {
+            return i;
+        }
     }
-    const result  = parseInt(nums.slice(zeroIndex+1,nums.length).join(''),10) * symbol;
-    return (result>max || result < min)?0:result;
+    return -1;
 };
