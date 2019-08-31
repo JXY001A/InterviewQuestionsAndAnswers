@@ -3,30 +3,25 @@
  * @author: JXY
  * @Date: 2019-08-28 12:33:14
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-30 15:33:05
+ * @LastEditTime: 2019-08-31 13:59:55
  */
-
-
 /**
- * @param {number[][]} matrix
- * @return {void} Do not return anything, modify matrix in-place instead.
+ * @param {number} x
+ * @return {number}
  */
-test = [[1,2,3],[4,5,6],[7,8,9]];
-var rotate = function(matrix) {
-    const len1 = matrix.length;
-    const len2 = matrix[0].length;
+var reverse = function(x) {
+    const min = -Math.pow(2,31);
+    const max = Math.pow(2,31)  - 1; 
+    const symbol = x>=0?1:-1;
+    x = (symbol * x) + '';
+
+    if(x.length<=1) return x;
     
-   for(let k=0;k<len1;k+=1) {
-        matrix.push([]);
-   }
-    
-    let newIndex = len1;
-    for(let i=0;i<len2;i+=1) {
-        for(let j=len1-1;j>=0;j-=1) {
-            matrix[newIndex].push(matrix[j][i]);
-        }
-        newIndex+=1;
+    let nums = x.split('').reverse(); 
+    let zeroIndex = -1;
+    for(let i=0,len=nums.length;i<len && nums[i] == 0;i+=1) {
+        zeroIndex+=1;
     }
-    matrix.splice(0,len1);
+    const result  = parseInt(nums.slice(zeroIndex+1,nums.length).join(''),10) * symbol;
+    return (result>max || result < min)?0:result;
 };
-rotate(test);
