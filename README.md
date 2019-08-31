@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-30 09:10:47
+ * @LastEditTime: 2019-08-31 18:25:09
  -->
 
 # InterviewQuestionsAndAnswers
@@ -32,6 +32,10 @@
 20. [leetcode 移动零解决方法一](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d0137a813ee7aff18033f6206ac76c279b7477f7/src/algroithm.js#L439)
 21. [leetcode 移动零解决方法二](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d0137a813ee7aff18033f6206ac76c279b7477f7/src/algroithm.js#L455)
 22. [leetcode 有效的数独](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/d0137a813ee7aff18033f6206ac76c279b7477f7/src/algroithm.js#L493)
+23. [leetcode  旋转图像](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/79118a6c587d734ba084c7baa4b813de33c88da6/src/algroithm.js#L551)
+24. [leecode 反转字符串](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/79118a6c587d734ba084c7baa4b813de33c88da6/src/algroithm.js#L574)
+25. [leecode 整数反转](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/79118a6c587d734ba084c7baa4b813de33c88da6/src/algroithm.js#L587)
+26. [leecode 字符串中的第一个唯一字符](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/79118a6c587d734ba084c7baa4b813de33c88da6/src/algroithm.js#L609)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
