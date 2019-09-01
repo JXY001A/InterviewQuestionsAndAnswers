@@ -606,6 +606,7 @@ var reverse = function(x) {
  * @param {string} s
  * @return {number}
  */
+// 算法一
 var firstUniqChar1 = function(s) {
     if(s.length===0) return -1;
     let tempMap = {};
@@ -632,7 +633,7 @@ var firstUniqChar1 = function(s) {
     return typeof result === 'number'? result : -1;
     
 };
-
+// 算法二（优秀）
 var firstUniqChar2 = function(s) {
     for(let i = 0; i < s.length; i++) {
         if(s.indexOf(s[i]) === i && s.lastIndexOf(s[i]) === i) {
@@ -640,4 +641,39 @@ var firstUniqChar2 = function(s) {
         }
     }
     return -1;
+};
+
+/**
+ * @desc leecode 有效的字母异位词
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isAnagram = function(s, t) {
+    if(s.length !== t.length) return false;
+    const sTempMap = {};
+    const tTempMap = {};
+    const len = s.length;
+
+    for(let i=0;i<len;i+=1) {
+        if(sTempMap[s[i]]) {
+            sTempMap[s[i]]+=1;
+        }else{
+            sTempMap[s[i]]=1;
+        }
+
+        if(tTempMap[t[i]]) {
+            tTempMap[t[i]]+=1;
+        }else{
+            tTempMap[t[i]]=1;
+        }
+    }
+
+    for(const key in sTempMap) {
+        if(tTempMap[key] !== sTempMap[key]) {
+            return false;
+        }
+    }
+    
+    return true;
 };
