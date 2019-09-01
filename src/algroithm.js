@@ -715,3 +715,45 @@ var isPalindrome2 = function(s) {
     }
     return true;
 };
+
+
+/**
+ * @desc leecode 字符串转换整数 (atoi)
+ * @param {string} str
+ * @return {number}
+ */
+var myAtoi = function(str) {
+    const min = -Math.pow(2,31);
+    const max = Math.pow(2,31)  - 1;
+    str = str.trim();
+
+    let numsArr = str.match(/^[-+]?\d+/g);
+    if(!numsArr) return 0;
+    const result = parseInt(numsArr[0],10);
+    
+    if(result>max) return  max;
+    if(result<min) return  min;
+
+    return result;
+};
+
+/**
+ * @desc leecode 最长公共前缀
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+    if(!strs.length) return '';
+    strs = strs.sort((stra,strb)=>{return stra.length-strb.length});
+    const minStr =  strs[0];
+    if(minStr==='') return '';
+    
+    let prefix = '';
+    for(let i=0,len=minStr.length;i<len;i+=1) {
+        var tempPrefix = minStr[i];
+        const isPrefix = strs.every((item)=>item[i]===tempPrefix);
+        if(!isPrefix) return  prefix;
+        prefix+=tempPrefix;
+    }
+    return prefix;
+};
