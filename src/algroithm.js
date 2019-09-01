@@ -677,3 +677,41 @@ var isAnagram = function(s, t) {
     
     return true;
 };
+
+/**
+ * @desc leecode 验证回文串
+ * @param {string} s
+ * @return {boolean}
+ */
+// 算法一
+var isPalindrome1 = function(s) {
+    let strArr = s.match(/[0-9a-zA-Z]+/g);
+    if(!strArr) {
+      return true;  
+    }
+    const chars = strArr.join('').toLowerCase().split('');
+
+    const len =  chars.length;
+    
+    if(len<=1) return true;
+     
+    const halfLen = Math.floor(len/2);
+    let i = 0; 
+    while(i<halfLen) {
+        if(chars[i]!== chars[len-i-1]) return false;
+        i+=1;
+    } 
+    return true;
+};
+
+// 算法二（更快）
+var isPalindrome2 = function(s) {
+    s = s.replace(/[^a-zA-Z0-9]/g,"").replace(/\s/g,"").toLowerCase();
+    let i =0,j = s.length-1;
+    while(j>i) {
+        if(s[j]!=s[i]) return false;
+        i++;
+        j--;
+    }
+    return true;
+};
