@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-01 21:38:47
+ * @LastEditTime: 2019-09-03 22:00:08
  -->
 
 # InterviewQuestionsAndAnswers
@@ -40,6 +40,9 @@
 28. [leecode 验证回文串](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/9187c5d2d27099f4b7d251d979770cbb62b651c5/src/algroithm.js#L687)
 29. [leecode 字符串转换整数 (atoi)](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/9187c5d2d27099f4b7d251d979770cbb62b651c5/src/algroithm.js#L725)
 30. [leecode 最长公共前缀](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/9187c5d2d27099f4b7d251d979770cbb62b651c5/src/algroithm.js#L745)
+31. [leecode 删除链表中的节点](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e4d759e9cf50eed5c544e2c05ed5a034bcfa56f3/src/algroithm.js#L774)
+32. [leecode 删除链表的倒数第N个节点](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e4d759e9cf50eed5c544e2c05ed5a034bcfa56f3/src/algroithm.js#L795)
+33. [leecode 反转链表](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/e4d759e9cf50eed5c544e2c05ed5a034bcfa56f3/src/algroithm.js#L841)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
