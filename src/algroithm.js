@@ -777,3 +777,92 @@ var deleteNode = function(node) {
         node.next =  node.next.next;
     }
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @desc leecode 删除链表的倒数第N个节点
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function(head, n) {
+    let tempNode =   head;
+    let linkedLength = 1;
+    const linkedArr = [];
+    linkedArr[linkedLength] = tempNode;
+
+    while(tempNode.next) {
+        tempNode = tempNode.next;
+        linkedLength+=1;
+        linkedArr[linkedLength] = tempNode;
+    }
+    // 给定一个链表: 1->2->3->4->5, 和 n = 2. 5-2+1 = 4
+    const positionIndex = linkedLength-n+1;
+    tempNode = linkedArr[positionIndex];
+
+    if(positionIndex === linkedLength && linkedLength ===1) {
+        return null;
+    }
+
+    if(!tempNode.next) {
+        // 当被删除节点指向最后一个节点时，他的父节next 设置为 null 即可删除
+        linkedArr[positionIndex-1].next = null;
+    }else{
+
+        tempNode.val =  tempNode.next.val ;
+        tempNode.next = tempNode.next.next;
+    }
+    
+    return head; 
+}
+
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @desc leecode 反转链表
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+
+var reverseList1 = function(head) {
+   if(!head || !head.next) return head; 
+   let tempNode = head;
+   let nodeList = [];
+   while(tempNode) {
+        nodeList.push(tempNode);
+        tempNode = tempNode.next;
+   }
+
+   for(let i=nodeList.length-1;i>0;i-=1) {
+       nodeList[i].next = nodeList[i-1]; 
+   }
+   head.next = null;
+   return nodeList[nodeList.length-1];
+};
+
+var reverseList2 = function(head) {
+    var prev = null;
+    var curr = head;
+    var newNode = head;
+    while(curr) {
+        newNode =  curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = newNode;
+    }
+    return prev;
+};
