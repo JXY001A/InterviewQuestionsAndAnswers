@@ -912,3 +912,33 @@ var mergeTwoLists = function(l1, l2) {
     if(l2 === null) newHead.next = l1;
     return head;
 };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @desc leecode 验证回文链表算法
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+var isPalindrome = function(head) {
+    if(head === null || head.next === null) return true;
+    var nodeList = [];
+    
+    while(head) {
+        nodeList.push(head);
+        head = head.next;
+    }
+    
+    var len = nodeList.length;
+    var halfLen = parseInt(len/2,10);
+    for(var i=0;i<halfLen;i+=1)  {
+          if(nodeList[i].val !== nodeList[len-i-1].val) return false;   
+    }
+    return true; 
+    
+};
