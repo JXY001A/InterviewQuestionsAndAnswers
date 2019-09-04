@@ -940,5 +940,35 @@ var isPalindrome = function(head) {
           if(nodeList[i].val !== nodeList[len-i-1].val) return false;   
     }
     return true; 
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @desc leecode 验证环形链表
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+var hasCycle = function(head) {
+    if(head === null || head.next === null) return false;
     
+    var index = 0;
+    while(head.next) {
+        if(head.index !== void 0) {
+            return true;
+        }else{
+            head.index = index;
+        }
+        
+        head = head.next;
+        index+=1;
+    }
+    
+    return false; 
 };
