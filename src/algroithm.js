@@ -866,3 +866,49 @@ var reverseList2 = function(head) {
     }
     return prev;
 };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @desc leecode 合并两个有序链表
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function(l1, l2) {
+    if(l1 === null) return l2;
+    if(l2 === null) return l1;
+    
+    let newHead =  head = null;
+    
+    if(l1.val<l2.val) {
+        newHead = l1;
+        head = l1;
+        l1 = l1.next;
+    }else{
+        newHead = l2;
+        head = l2;
+        l2 = l2.next;
+    }
+    
+    while(l1 && l2) {
+        if(l1.val<l2.val) {
+            newHead.next = l1;
+            newHead = l1;
+            l1 = l1.next;
+        }else{
+            newHead.next = l2;
+            newHead = l2;
+            l2 = l2.next;
+        }      
+    }
+    
+    if(l1 === null) newHead.next = l2;
+    if(l2 === null) newHead.next = l1;
+    return head;
+};
