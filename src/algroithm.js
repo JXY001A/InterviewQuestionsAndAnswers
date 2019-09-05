@@ -972,3 +972,32 @@ var hasCycle = function(head) {
     
     return false; 
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @desc leecode 二叉树的最大深度
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth1 = function(root) {
+    var _depth = (root)=>{
+    if(root === null) return 0;
+        let i = _depth(root.left);
+        let j = _depth(root.right);
+
+        return Math.max(i,j) + 1;
+    }
+    return _depth(root);
+};
+
+
+var maxDepth2 = function(root) {
+    if(root === null) return 0;
+    return 1 + Math.max(maxDepth(root.left) , maxDepth(root.right));
+};
