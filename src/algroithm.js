@@ -1093,3 +1093,35 @@ var isSymmetric2 = function(root) {
     } 
     return true;
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @desc leecode 二叉树的层次遍历
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+    const listLevel = [];
+    if(root===null) return listLevel;
+    
+    const nodeList = [root];
+    while(nodeList.length !== 0) {
+        let len = nodeList.length-1;
+        let tempList = [];
+        while(len>=0) {
+            let tempNode = nodeList.shift();
+            if(tempNode.left)  nodeList.push(tempNode.left);
+            if(tempNode.right) nodeList.push(tempNode.right);
+            tempList.push(tempNode.val);
+            len-=1;
+        }
+        listLevel.push(tempList);
+    }
+    return listLevel;
+};
