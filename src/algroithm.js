@@ -1153,3 +1153,33 @@ var sortedArrayToBST = function(nums) {
     return _sortedArrayToBST(nums,0,nums.length-1);
     
 };
+
+/**
+ * @name leecode 合并两个有序数组
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function(nums1, m, nums2, n) {
+    const temp = nums1.slice(0,m);
+    
+    let i=j=0;
+    const maxLength = m + n;
+    for(let k=0;k<maxLength;k+=1) {
+        if(temp[i] >= nums2[j] && j < n) {
+            nums1[k] = nums2[j];
+            j+=1;
+        }else if(temp[i] <= nums2[j] && i < m){
+            nums1[k] = temp[i];
+            i+=1;            
+        }else if(j>n-1) {
+            nums1[k] = temp[i];
+            i+=1
+        }else{
+            nums1[k] = nums2[j];
+            j+=1
+        }
+    }
+};
