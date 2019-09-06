@@ -1164,7 +1164,6 @@ var sortedArrayToBST = function(nums) {
  */
 var merge = function(nums1, m, nums2, n) {
     const temp = nums1.slice(0,m);
-    
     let i=j=0;
     const maxLength = m + n;
     for(let k=0;k<maxLength;k+=1) {
