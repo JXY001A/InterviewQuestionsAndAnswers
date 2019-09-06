@@ -298,7 +298,7 @@ function mergeSort(nums) {
 
 
 /**
- * @desc 字符串大写转小写
+ * @name 字符串大写转小写
  * @param {string} str
  * @return {string}
 */
@@ -321,7 +321,7 @@ var toLowerCase = function(str) {
 };
 
 /**
- * @desc 数组去重算法
+ * @name 数组去重算法
  * @param {number[]} nums
  * @return {number}
  * const nums = [0,0,1,1,1,2,2,3,3,4];
@@ -341,7 +341,7 @@ var removeDuplicates = function(nums) {
 };
 
  /**
- * @desc leetcode 买卖股票的最佳时机 II
+ * @name leetcode 买卖股票的最佳时机 II
  * @param {number[]} prices
  * @return {number}
  */
@@ -358,7 +358,7 @@ var maxProfit = function(prices) {
 };
 
 /**
- * @desc leetcode 旋转数组
+ * @name leetcode 旋转数组
  * @param {number[]} nums
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
@@ -372,7 +372,7 @@ var rotate = function(nums, k) {
 };
 
 /**
- * @desc leetcode 存在重复
+ * @name leetcode 存在重复
  * @param {number[]} nums
  * @return {boolean}
  */
@@ -384,7 +384,7 @@ var containsDuplicate = function(nums) {
 };
 
 /**
- * @desc leetcode 两个数组的交集 II
+ * @name leetcode 两个数组的交集 II
  * @param {number[]} nums1
  * @param {number[]} nums2
  * @return {number[]}
@@ -405,7 +405,7 @@ var intersect = function(nums1, nums2) {
 }
 
 /**
- * @desc leetcode 加一
+ * @name leetcode 加一
  * @param {number[]} digits
  * @return {number[]}
  */
@@ -432,7 +432,7 @@ var plusOne = function(digits) {
 };
 
 /**
- *  @desc leetcode 移动零
+ *  @name leetcode 移动零
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
@@ -468,7 +468,7 @@ var moveZeroes2 = function(nums) {
 };
 
 /**
- * @desc leetcode 两数之和
+ * @name leetcode 两数之和
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -486,7 +486,7 @@ var twoSum = function(nums, target) {
 
 
 /**
- * @desc leetcode 有效的数独
+ * @name leetcode 有效的数独
  * @param {character[][]} board
  * @return {boolean}
  */
@@ -543,7 +543,7 @@ var isValidSudoku = function(board) {
     return true;
 };
 /**
- * @desc leetcode  旋转图像
+ * @name leetcode  旋转图像
  * @param {number[][]} matrix
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
@@ -567,7 +567,7 @@ var rotate = function(matrix) {
 };
 
 /**
- * @desc leecode 反转字符串
+ * @name leecode 反转字符串
  * @param {character[]} s
  * @return {void} Do not return anything, modify s in-place instead.
  */
@@ -580,7 +580,7 @@ var reverseString = function(s) {
 };
 
 /**
- * @desc leecode 整数反转
+ * @name leecode 整数反转
  * @param {number} x
  * @return {number}
  */
@@ -602,7 +602,7 @@ var reverse = function(x) {
 };
 
 /**
- * @desc leecode 字符串中的第一个唯一字符
+ * @name leecode 字符串中的第一个唯一字符
  * @param {string} s
  * @return {number}
  */
@@ -644,7 +644,7 @@ var firstUniqChar2 = function(s) {
 };
 
 /**
- * @desc leecode 有效的字母异位词
+ * @name leecode 有效的字母异位词
  * @param {string} s
  * @param {string} t
  * @return {boolean}
@@ -679,7 +679,7 @@ var isAnagram = function(s, t) {
 };
 
 /**
- * @desc leecode 验证回文串
+ * @name leecode 验证回文串
  * @param {string} s
  * @return {boolean}
  */
@@ -718,7 +718,7 @@ var isPalindrome2 = function(s) {
 
 
 /**
- * @desc leecode 字符串转换整数 (atoi)
+ * @name leecode 字符串转换整数 (atoi)
  * @param {string} str
  * @return {number}
  */
@@ -738,7 +738,7 @@ var myAtoi = function(str) {
 };
 
 /**
- * @desc leecode 最长公共前缀
+ * @name leecode 最长公共前缀
  * @param {string[]} strs
  * @return {string}
  */
@@ -767,7 +767,7 @@ var longestCommonPrefix = function(strs) {
  * }
  */
 /**
- * @desc leecode 删除链表中的节点
+ * @name leecode 删除链表中的节点
  * @param {ListNode} node
  * @return {void} Do not return anything, modify node in-place instead.
  */
@@ -787,7 +787,7 @@ var deleteNode = function(node) {
  * }
  */
 /**
- * @desc leecode 删除链表的倒数第N个节点
+ * @name leecode 删除链表的倒数第N个节点
  * @param {ListNode} head
  * @param {number} n
  * @return {ListNode}
@@ -833,7 +833,7 @@ var removeNthFromEnd = function(head, n) {
  * }
  */
 /**
- * @desc leecode 反转链表
+ * @name leecode 反转链表
  * @param {ListNode} head
  * @return {ListNode}
  */
@@ -875,7 +875,7 @@ var reverseList2 = function(head) {
  * }
  */
 /**
- * @desc leecode 合并两个有序链表
+ * @name leecode 合并两个有序链表
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}
@@ -921,7 +921,7 @@ var mergeTwoLists = function(l1, l2) {
  * }
  */
 /**
- * @desc leecode 验证回文链表算法
+ * @name leecode 验证回文链表算法
  * @param {ListNode} head
  * @return {boolean}
  */
@@ -951,7 +951,7 @@ var isPalindrome = function(head) {
  */
 
 /**
- * @desc leecode 验证环形链表
+ * @name leecode 验证环形链表
  * @param {ListNode} head
  * @return {boolean}
  */
@@ -981,7 +981,7 @@ var hasCycle = function(head) {
  * }
  */
 /**
- * @desc leecode 二叉树的最大深度
+ * @name leecode 二叉树的最大深度
  * @param {TreeNode} root
  * @return {number}
  */
@@ -1011,7 +1011,7 @@ var maxDepth2 = function(root) {
  */
 
 /**
- * @desc leecode 验证二叉搜索树
+ * @name leecode 验证二叉搜索树
  * @param {TreeNode} root
  * @return {boolean}
  * 
@@ -1050,7 +1050,7 @@ var isValidBST = function(root) {
  * }
  */
 /**
- * @desc leecode 验证对称二叉树
+ * @name leecode 验证对称二叉树
  * @param {TreeNode} root
  * @return {boolean}
  */
@@ -1102,7 +1102,7 @@ var isSymmetric2 = function(root) {
  * }
  */
 /**
- * @desc leecode 二叉树的层次遍历
+ * @name leecode 二叉树的层次遍历
  * @param {TreeNode} root
  * @return {number[][]}
  */
@@ -1124,4 +1124,32 @@ var levelOrder = function(root) {
         listLevel.push(tempList);
     }
     return listLevel;
+};
+
+/**
+ * @name leecode 将有序数组转换为二叉搜索树
+ * @desc 二叉搜索树： 指的是任何一个节点的左子树的值都小于该节点，右子树都大于该节点
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var sortedArrayToBST = function(nums) {
+    function TreeNode(val) {
+      this.val = val;
+      this.left = this.right = null;
+    }
+    
+    function _sortedArrayToBST(nums,l,r) {
+        if(l>r) return null;
+        const mid = parseInt((l+r)/2);
+        const curr = new TreeNode(nums[mid]);
+        curr.left = _sortedArrayToBST(nums,l,mid-1);
+        curr.right = _sortedArrayToBST(nums,mid+1,r);
+
+        return curr;
+    }
+    
+    if(nums === null || nums.length === 0) return null;
+    
+    return _sortedArrayToBST(nums,0,nums.length-1);
+    
 };
