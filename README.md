@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-06 09:36:29
+ * @LastEditTime: 2019-09-06 12:02:06
  -->
 
 # InterviewQuestionsAndAnswers
@@ -49,6 +49,8 @@
 37. [二叉树的最大深度](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/6eb12b6ca0ef3b17f19892e690a56ce9f24016b9/src/algroithm.js#L988)
 38. [二叉树的最大深度-优化](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/6eb12b6ca0ef3b17f19892e690a56ce9f24016b9/src/algroithm.js#L1000)
 39. [验证二叉搜索树](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/5be6eea1df430a6576637474cc3d0966885626fa/src/algroithm.js#L1025)
+40. [验证对称二叉树-递归实现](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/6d927f6fbe395320a60c9e0ab0c6f5331583f1eb/src/algroithm.js#L1058)
+41. [验证对称二叉树-层级遍历实现](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/6d927f6fbe395320a60c9e0ab0c6f5331583f1eb/src/algroithm.js#L1073)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
