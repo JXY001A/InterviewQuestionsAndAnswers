@@ -1001,3 +1001,42 @@ var maxDepth2 = function(root) {
     if(root === null) return 0;
     return 1 + Math.max(maxDepth(root.left) , maxDepth(root.right));
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ * 
+ *            6       
+ *        /      \
+ *      4         9
+ *   /   \      /  \
+ *  1     5    7    10
+ * 
+ * 中序遍历后的 valList ===  [1,4,5,6,7,9,10];
+ */
+var isValidBST = function(root) {
+    
+    var valList = [];
+    function _isValidBST(root) {
+        // 中序遍历
+        if(root === null) return;
+        _isValidBST(root.left);
+        valList.push(root.val);
+        _isValidBST(root.right);
+    }
+    
+    _isValidBST(root);
+    for(let i=0,len=valList.length;i<len-1;i+=1) {
+        if(valList[i] >= valList[i+1]) return false;
+    }
+    
+    return true;  
+};
