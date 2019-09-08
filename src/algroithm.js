@@ -1208,3 +1208,32 @@ var solution = function(isBadVersion) {
         return r;
     };
 };
+
+/**
+ * @name leecode 爬楼梯
+ * @param {number} n
+ * @return {number}
+ */
+/* 
+ *  @思路描述 1个台阶 : 1 阶;  2个台阶：1阶+1阶，2阶;  3个台阶：1阶+1阶+1阶，2阶+1阶+1阶，1阶+1阶+2阶
+ * 可以这样考虑，有3个台阶，假如第一步走了1个台阶，剩下的就相当于走2个台阶的情况了。如果第一步走2个台阶，剩下的相当于走一个台阶。于是乎，走三个台阶情况就等于
+ * 走一个台阶的可能性 加上走两个台阶的可能性。依次类推，观察属树形
+ *  
+ *             5
+ *          2/   \1
+ *         3      4
+ *       2/ \1  2/ \1
+ *       2  1   2   3
+ *                 1/\2
+ *                 2  1              
+ * */
+var climbStairs = function(n) {
+    if(n<3)  return n;
+    let resultList = [1,2];
+    let i=2;
+    while(i<n) {
+        resultList[i] = resultList[i-1] + resultList[i-2]; 
+        i+=1;
+    }
+    return resultList[n-1];
+};
