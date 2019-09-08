@@ -1237,3 +1237,19 @@ var climbStairs = function(n) {
     }
     return resultList[n-1];
 };
+
+
+/**
+ * @name leecode 买卖股票的最佳时机(动态规划)
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let profit = 0;
+    let minPrices = prices[0];
+    for(i=1,len=prices.length;i<len;i+=1) {
+        minPrices = Math.min(minPrices,prices[i]);
+        profit = Math.max(profit,prices[i]-minPrices);
+    }
+    return profit;
+};
