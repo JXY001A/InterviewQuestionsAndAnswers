@@ -1253,3 +1253,41 @@ var maxProfit = function(prices) {
     }
     return profit;
 };
+/**
+ * @name leecode 最大子序和
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 解法一 
+// 思路：[1,2,3] sum[3] - sum[1] = 2+3 ，计算每一个为位置的序列和 sum(1) = 1,sum(2) = 1+3, sum(3) = 1+2+3,……，
+// 这样计算出来后在进行循环相减比较找到最大连续子数组和
+var maxSubArray1 = function(nums) {
+    if(nums.length<=1) return nums; 
+    var sums = [0];
+    for(let i=1,len=nums.length+1;i<len;i+=1) {
+        sums[i] = sums[i-1]+nums[i-1];
+    }
+    
+    let maxresult = Number.MIN_SAFE_INTEGER;
+    for(let i=0,len=sums.length;i<len;i+=1) {
+        for(let j=i+1,len=sums.length;j<len;j+=1) {
+            const temp = sums[j] - sums[i];
+            if(temp > maxresult) {
+                maxresult = temp;
+            }
+        }
+    }
+    return maxresult;
+};
+// 解法二
+// 思路：循环连续相加，去该值与相加后结果中间的最大值，如果想连续相加小于当前值，则舍弃重新开始。最终找到最大和子数组
+var maxSubArray2 = function(nums) {
+    if(nums.length<=1) return nums; 
+    let dp = [Number.MIN_SAFE_INTEGER];
+    let maxResult = Number.MIN_SAFE_INTEGER;
+    for(let i=1,len=nums.length+1;i<len;i+=1) {
+        dp[i] = Math.max(dp[i-1]+nums[i-1],nums[i-1]);
+        maxResult = Math.max(maxResult,dp[i])
+    }
+    return  maxResult;
+};
