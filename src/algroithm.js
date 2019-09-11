@@ -1291,3 +1291,18 @@ var maxSubArray2 = function(nums) {
     }
     return  maxResult;
 };
+
+/**
+ * @name leecode 打家劫舍
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 思路：rob(i) = rob(i-1) || rob(i-2) + nums[i]
+var rob = function(nums) {
+    if(nums.length === 0 ) return 0;
+    let dp = [0,nums[0]];
+    for(let i=1,len=nums.length;i<len;i+=1) {
+        dp[i+1] = Math.max(dp[i],dp[i-1]+nums[i]);
+    }
+    return dp.pop();
+};
