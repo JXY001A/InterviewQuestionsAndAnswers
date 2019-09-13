@@ -1375,3 +1375,70 @@ var hammingWeight = function(n) {
     }
     return n += i
 };
+
+/**
+ * @name leecode 汉明距离
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ */
+var hammingDistance = function(x, y) {
+    const binaryX = x.toString(2).split('');
+    const binaryY = y.toString(2).split('');
+    let distence = 0;
+    if(binaryX.length > binaryY.length) {
+        let diffLength = binaryX.length - binaryY.length;
+        while(diffLength>0){
+            diffLength-=1;
+            binaryY.unshift('0');
+        }
+    }
+    
+    if(binaryX.length < binaryY.length) {
+        let diffLength = binaryY.length - binaryX.length;
+        while(diffLength>0){
+            diffLength-=1;
+            binaryX.unshift('0');
+        }
+    }
+    
+    let distance = 0;
+    for(let i=0,len=binaryX.length;i<len;i+=1) {
+        if(binaryX[i] !== binaryY[i]) distance+=1;
+    }
+    return distance;
+};
+
+/**
+ * @name leecode 帕斯卡三角形 (杨辉三角)
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+    if(numRows===0) return [];
+    const result = [[1]];
+    if(numRows === 1) result;
+    let i=1;
+    while(i<numRows) {
+        const temp = [];
+        for(let j=0;j<=i;j+=1) {
+            const parent1 = result[i-1][j-1];
+            const parent2 = result[i-1][j];
+            if(parent1 && !parent2) {
+                temp.push(parent1);
+            }
+            
+            if(!parent1 && parent2) {
+                temp.push(parent2);
+            }
+            
+            if(parent1 && parent2) {
+                temp.push(parent2 +parent1);
+            }
+            
+        }
+        result.push(temp);
+        i+=1;
+    }
+    return result;
+};
