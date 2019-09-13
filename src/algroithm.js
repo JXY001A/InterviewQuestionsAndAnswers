@@ -1442,3 +1442,33 @@ var generate = function(numRows) {
     }
     return result;
 };
+
+/**
+ * @name leecode 有效的括号
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    if(!s) return true;
+    if(s.length===1) return false;
+    
+    const tempMap = {
+        '(':')',
+        '{':'}',
+        '[':']',
+    }
+    
+    let i = 0;
+    let listStack = [];
+    while(i<s.length) {
+        if(s[i] === '(' || s[i] === '[' || s[i] === '{') {
+            listStack.push(s[i]);
+        }else{
+            if(listStack.length === 0) return false;
+            const chart =  listStack.pop();
+            if(tempMap[chart] !== s[i]) return false;
+        }
+        i+=1;
+    }
+    return listStack.length === 0;
+};
