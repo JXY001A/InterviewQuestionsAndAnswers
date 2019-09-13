@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-13 11:47:15
+ * @LastEditTime: 2019-09-13 17:33:22
  -->
 
 # InterviewQuestionsAndAnswers
@@ -63,6 +63,9 @@
 51. [leecode 计数质数](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2a5eee32befb026e5f8f83ade0a65c6ee3f3c386/src/algroithm.js#L1315)
 52. [leecode 计数质数罗马数字转整数](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2a5eee32befb026e5f8f83ade0a65c6ee3f3c386/src/algroithm.js#L1343)
 53. [leecode 位1的个数](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/2a5eee32befb026e5f8f83ade0a65c6ee3f3c386/src/algroithm.js#L1369)
+54. [leecode 汉明距离](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/215284a24cf7cf7a90c4c4a1fd67751e77c5ca54/src/algroithm.js#L1385)
+55. [leecode 帕斯卡三角形 (杨辉三角)](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/215284a24cf7cf7a90c4c4a1fd67751e77c5ca54/src/algroithm.js#L1417)
+56. [leecode 有效的括号](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/215284a24cf7cf7a90c4c4a1fd67751e77c5ca54/src/algroithm.js#L1451)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
