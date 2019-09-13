@@ -1306,3 +1306,73 @@ var rob = function(nums) {
     }
     return dp.pop();
 };
+
+/**
+ * @name leecode 计数质数
+ * @param {number} n
+ * @return {number}
+ */
+var countPrimes = function(n) {
+    var count = 0;
+    if(n<=2) return count;
+    
+    const basePrimes = [2, 3, 5, 7];
+    
+    function isPrimse(n) {
+        for(let j=2;j*j<=n;j+=1) {
+            if(n%j===0) return false;
+        }
+        return true;
+    }
+    
+    for(i=2;i<n;i+=1) {
+        if(basePrimes.indexOf(i)!==-1) {
+            count+=1;
+        }else{
+            if(isPrimse(i)) {
+               count+=1; 
+            }
+        }
+    }
+   return count;
+};
+
+/* 
+  @name leecode 计数质数罗马数字转整数
+*/
+var romanToInt = function(s) {
+    const romanMap = {
+        I:1,
+        V:5,
+        X:10,
+        L:50,
+        C:100,
+        D:500,
+        M:1000,
+    };
+    
+    let prev = s[0];
+    let result = 0;
+    for(let i=s.length-1;i>=0;i-=1) {
+        const symbol = romanMap[s[i]] < romanMap[prev] ? -1 : 1;
+        result+=(symbol*romanMap[s[i]]);
+        prev = s[i];
+    }
+    return result;
+};
+
+/**
+ * @name leecode 位1的个数
+ * @param {number} n - a positive integer
+ * @return {number}
+ */
+var hammingWeight = function(n) {
+    let i = 0
+    
+    while(n !== 1 && n !== 0) {
+        i += n % 2
+        n = Math.floor(n / 2)    
+    }
+    
+    return n += i
+};
