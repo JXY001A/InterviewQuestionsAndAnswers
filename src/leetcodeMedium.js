@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-18 22:15:38
+ * @LastEditTime: 2019-09-19 22:18:14
  */
 /**
  * @ leetcode  三数之和
@@ -38,4 +38,41 @@ var threeSum = function(nums) {
     }
     
     return result;
+};
+
+
+/**
+ * @ leetcode 矩阵置零
+ * @param {number[][]} matrix
+ * @return {void} Do not return anything, modify matrix in-place instead.
+ */
+var setZeroes = function(matrix) {
+    if(matrix.length===0) return matrix; 
+    let n =  matrix.length;
+    let m =  matrix[0].length;
+    let zeros = Array(m+n).fill(false);
+    
+    for(let i=0;i<n;i+=1) {
+        for(let j=0;j<m;j+=1) {
+            if(matrix[i][j]===0) {
+                zeros[i] = true;
+                zeros[n+j]  = true;
+            }
+        }
+    }
+    
+    for(let i=0;i<n;i+=1) {
+        if(zeros[i]) {
+            matrix[i] = Array(m).fill(0);
+        }
+    }
+    
+    for(let i=0;i<m;i+=1) {
+        if(zeros[n+i]) {
+            for(let j=0;j<n;j+=1) {
+                matrix[j][i] = 0;
+            }
+        }
+    }
+    
 };
