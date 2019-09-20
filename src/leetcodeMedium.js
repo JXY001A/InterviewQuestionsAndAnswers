@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-19 22:18:14
+ * @LastEditTime: 2019-09-20 14:28:21
  */
 /**
  * @ leetcode  三数之和
@@ -74,5 +74,39 @@ var setZeroes = function(matrix) {
             }
         }
     }
+    
+};
+
+/**
+ * leetcode 字谜分组
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function(strs) {
+    const result = [];
+    if(strs.length===0) return result;
+    
+    strs = strs.map((str)=>{
+        const key = str.split('').sort((a,b)=>a.charCodeAt(0) - b.charCodeAt(0)).join('');
+        return {[key]:str};
+    });
+    
+    const tempMap = {};
+    
+    
+    strs.forEach((strObj)=>{
+        for(let key in strObj) {
+            const str = strObj[key];
+            if(tempMap[key] === undefined) {
+                tempMap[key] = result.length;
+                result[tempMap[key]] = [str]
+            }else{
+                result[tempMap[key]].push(str);
+            }
+        } 
+        
+    });
+    
+    return result;
     
 };
