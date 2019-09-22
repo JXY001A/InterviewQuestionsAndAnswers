@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-20 14:28:21
+ * @LastEditTime: 2019-09-22 22:50:30
  */
 /**
  * @ leetcode  三数之和
@@ -109,4 +109,35 @@ var groupAnagrams = function(strs) {
     
     return result;
     
+};
+
+
+/**
+ * @name leetcode 无重复字符的最长子串
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    if(!s) return 0;
+    
+    let tempMap = {};
+    let res = 0;
+    let slieWindow = [];
+    
+    for(let c of s) {
+        if(tempMap[c]) {
+            let delIndex = slieWindow.findIndex(_c => _c === c);
+            for(let i=0;i<=delIndex;i+=1) {
+                tempMap[slieWindow[i]] = false;
+            }
+            slieWindow = slieWindow.slice(delIndex+1).concat(c);
+        }else{
+            if(slieWindow.push(c) > res) {
+                res = slieWindow.length;
+            }
+        }
+        // 考虑 'ddddd' 情况 
+        tempMap[c] = true;
+    }
+    return res;
 };
