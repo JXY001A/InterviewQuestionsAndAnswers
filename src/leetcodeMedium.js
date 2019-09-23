@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-22 22:50:30
+ * @LastEditTime: 2019-09-23 17:57:50
  */
 /**
  * @ leetcode  三数之和
@@ -140,4 +140,59 @@ var lengthOfLongestSubstring = function(s) {
         tempMap[c] = true;
     }
     return res;
+};
+
+
+/**
+ * @name  leetcode 无重复字符的最长子串
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring1 = function(s) {
+    if(!s) return 0;
+    
+    let tempMap = {};
+    let res = 0;
+    let slieWindow = [];
+    
+    for(let c of s) {
+        if(tempMap[c]) {
+            let delIndex = slieWindow.findIndex(_c => _c === c);
+            for(let i=0;i<=delIndex;i+=1) {
+                tempMap[slieWindow[i]] = false;
+            }
+            slieWindow = slieWindow.slice(delIndex+1).concat(c);
+        }else{
+            if(slieWindow.push(c) > res) {
+                res = slieWindow.length;
+            }
+        }
+        tempMap[c] = true;
+    }
+    return res;
+};
+
+/**
+ * @name  leetcode 无重复字符的最长子串，优化
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring2 = function(s) {
+    const len = s.length;
+    if(len == 0 ) return 0;
+
+    let max_len = 0;
+    let str = '';
+
+    for(let i=0;i<len;i+=1) {
+        const delIndex = str.indexOf(s[i]);
+        if(delIndex !== -1) {
+            str = str.slice(delIndex+1)+s[i];
+        }else{
+            str+=s[i];
+        }
+        max_len  = Math.max(max_len,str.length);
+    }
+    
+    return   max_len;
 };
