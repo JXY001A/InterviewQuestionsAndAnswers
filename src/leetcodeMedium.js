@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-23 17:57:50
+ * @LastEditTime: 2019-09-24 22:07:39
  */
 /**
  * @ leetcode  三数之和
@@ -195,4 +195,33 @@ var lengthOfLongestSubstring2 = function(s) {
     }
     
     return   max_len;
+};
+
+/**
+ * @name  leetcode 最长回文子串
+ * @param {string} s
+ * @return {string}
+ * @关键 if(s[i] === s[j] && dp[i+1][j-1]) { 此时的 s.slice(i,j+1) 为回文字符串}
+ */
+var longestPalindrome = function(s) {
+    const len = s.length;
+    if(len<=1) return s;
+    const dp = [];
+    let res = '';
+    for(let i=len-1;i>=0;i-=1) {
+        dp[i] = [];
+        for(let j=i;j<len;j+=1) {
+            if(i === j) {
+                dp[i][j] = true;
+            }else if(j-i == 1 && s[i] === s[j]){
+                dp[i][j] = true;
+            }else if(s[i] === s[j] && dp[i+1][j-1]) {
+                dp[i][j] = true;
+            }
+            
+            if(dp[i][j] && j-i+1 > res.length) 
+                res = s.slice(i,j+1);
+        }
+    }
+    return res;
 };
