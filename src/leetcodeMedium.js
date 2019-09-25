@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-24 22:07:39
+ * @LastEditTime: 2019-09-25 14:20:57
  */
 /**
  * @ leetcode  三数之和
@@ -224,4 +224,31 @@ var longestPalindrome = function(s) {
         }
     }
     return res;
+};
+
+
+/**
+ * @name  leetcode 递增的三元子序列
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var increasingTriplet = function(nums) {
+    const len = nums.length;
+    if(len < 3) return false;
+    
+    let one = Number.MAX_VALUE;
+    let two = Number.MAX_VALUE;
+    
+    for(i=0;i<len;i+=1) {
+        if(nums[i] <= one) {
+            one = nums[i];
+        }else if(nums[i] <= two) {
+            two = nums[i];
+        }else{
+            return true;
+        }
+    }
+    
+    return false;
+    
 };
