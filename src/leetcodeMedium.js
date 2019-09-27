@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-27 21:22:02
+ * @LastEditTime: 2019-09-27 21:26:31
  */
 /**
  * @ leetcode  三数之和
@@ -343,7 +343,7 @@ var oddEvenList = function(head) {
  */
 
 /**
- * @ leetcode 矩阵置零
+ * @ leetcode 相交链表
  * @param {ListNode} headA
  * @param {ListNode} headB
  * @return {ListNode}
