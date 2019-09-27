@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-25 22:01:12
+ * @LastEditTime: 2019-09-27 20:28:22
  */
 /**
  * @ leetcode  三数之和
@@ -301,3 +301,35 @@ var addTwoNumbers = function(l1, l2) {
     return head.next;
 };
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @name  leetcode 奇偶链表
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var oddEvenList = function(head) {
+    if(head===null || head.next === null) return head;
+    let oddV = {next:head};
+    let evenV = {next:head.next}
+    let odd = oddV.next;
+    let even = evenV.next;
+    
+    while(odd && even && odd.next && even.next) {
+        let nextOdd = odd.next.next;
+        let nextEven = even.next.next;
+        
+        odd.next = nextOdd;
+        even.next = nextEven;
+        
+        odd = odd.next;
+        even =even.next;
+    }
+    odd.next = evenV.next;
+    return oddV.next;
+};
