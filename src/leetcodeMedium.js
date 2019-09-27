@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-27 20:28:22
+ * @LastEditTime: 2019-09-27 21:22:02
  */
 /**
  * @ leetcode  三数之和
@@ -309,7 +309,7 @@ var addTwoNumbers = function(l1, l2) {
  * }
  */
 /**
- * @name  leetcode 奇偶链表
+ * c
  * @param {ListNode} head
  * @return {ListNode}
  */
@@ -332,4 +332,61 @@ var oddEvenList = function(head) {
     }
     odd.next = evenV.next;
     return oddV.next;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @ leetcode 矩阵置零
+ * @param {ListNode} headA
+ * @param {ListNode} headB
+ * @return {ListNode}
+ */
+var getIntersectionNode = function(headA, headB) {
+    if(headA == null || headB == null) return null;
+    
+    function getLength (node) {
+        let len = 0;
+        while(node) {
+            node = node.next;
+            len+=1;
+        }
+        return len; 
+    } 
+    
+    let a = headA;
+    let b = headB;
+    
+    let lena = getLength(a);
+    let lenb = getLength(b);
+    
+    
+    if(lena>lenb) {
+        let more = lena - lenb;
+        while(more>0) {
+            headA = headA.next;
+            more-=1;
+        }
+    }else {
+        let more = lenb - lena;
+        while(more>0) {
+            headB = headB.next;
+            more-=1
+        }
+    } 
+    
+    while(headA && headB) {
+        if(headA === headB) {
+            return headA; 
+        }
+        headA = headA.next;
+        headB = headB.next;
+    }
+    return null;  
 };
