@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-28 14:39:27
+ * @LastEditTime: 2019-09-28 16:26:41
  */
 /**
  * @ leetcode  三数之和
@@ -399,7 +399,7 @@ var getIntersectionNode = function(headA, headB) {
  * }
  */
 /**
- * @@ leetcode 中序遍历，迭代实现
+ * @ leetcode 中序遍历，迭代实现
  * @param {TreeNode} root
  * @return {number[]}
  */
@@ -422,6 +422,60 @@ var inorderTraversal = function(root) {
         while(right) {
             stacks.push(right);
             right = right.left;
+        }
+    }
+    return result;
+};
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @ leetcode 二叉树的锯齿形层次遍历
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var zigzagLevelOrder = function(root) {
+    if(!root) return [];
+    
+    const NORMAL  = '1';
+    const REVERSE = '0';
+    
+    let status = NORMAL;
+    
+    const stacks = [root];
+    const result = [];
+    
+    while(stacks.length>0) {
+        let levelCount = stacks.length;
+        let levelList = [];
+        
+        while(levelCount>0) {
+            let node = stacks.shift();
+            
+            if(node.left) {
+               stacks.push(node.left);
+            }
+            
+            if(node.right) {
+               stacks.push(node.right);
+            }
+            
+            levelList.push(node.val);
+            levelCount-=1;
+        }
+        
+        if(status === NORMAL) {
+            result.push(levelList);
+            status = REVERSE;
+        }else{
+            result.push(levelList.reverse());
+            status = NORMAL;
         }
     }
     return result;
