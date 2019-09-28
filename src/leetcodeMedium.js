@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-28 16:26:41
+ * @LastEditTime: 2019-09-28 21:57:40
  */
 /**
  * @ leetcode  三数之和
@@ -480,3 +480,39 @@ var zigzagLevelOrder = function(root) {
     }
     return result;
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @name leetcode 从前序与中序遍历序列构造二叉树
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+var buildTree = function(preorder, inorder) {
+    if(preorder.length == 0) return  null;
+    return getTree(preorder, inorder);
+};
+    
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
+
+function getTree(preorder,inorder) {
+    if(inorder.length == 0) return null;
+    const rootVal = preorder.shift();
+    
+    const root = new TreeNode(rootVal);
+    const rootIndex = inorder.indexOf(rootVal);
+    
+    root.left = getTree(preorder,inorder.slice(0,rootIndex));
+    root.right = getTree(preorder,inorder.slice(rootIndex+1));
+    
+    return  root;
+}
