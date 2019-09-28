@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-27 21:26:31
+ * @LastEditTime: 2019-09-28 14:39:27
  */
 /**
  * @ leetcode  三数之和
@@ -389,4 +389,40 @@ var getIntersectionNode = function(headA, headB) {
         headB = headB.next;
     }
     return null;  
+};
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @@ leetcode 中序遍历，迭代实现
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var inorderTraversal = function(root) {
+    if(root===null) return [];
+    
+    const stacks = [];
+    const result = [];
+    
+    while(root) {
+        stacks.push(root);
+        root = root.left; 
+    }
+    
+    while(stacks.length > 0) {
+        const node = stacks.pop();
+        result.push(node.val);
+        
+        let right = node.right;
+        while(right) {
+            stacks.push(right);
+            right = right.left;
+        }
+    }
+    return result;
 };
