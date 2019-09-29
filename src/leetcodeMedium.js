@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-29 16:05:39
+ * @LastEditTime: 2019-09-29 16:22:30
  */
 /**
  * @ leetcode  三数之和
@@ -556,7 +556,7 @@ var connect = function(root) {
  * }
  */
 /**
- * @name leetcode 二叉搜索树中第K小的元素
+ * @name leetcode 二叉搜索树中第K小的元素（递归方式）
  * @param {TreeNode} root
  * @param {number} k
  * @return {number}
@@ -574,4 +574,38 @@ var kthSmallest = function(root, k) {
     const list = [];
     iteatorTree(root,list);
     return list[k-1];
+};
+/**
+ * @name leetcode 二叉搜索树中第K小的元素 （迭代方式）
+ * @param {TreeNode} root
+ * @param {number} k
+ * @return {number}
+ */
+var kthSmallest = function(root, k) {
+    if(!root || k == 0) return;
+    let stacks = [];
+    let count = 0;
+    
+    while(root) {
+        stacks.push(root);
+        root = root.left;
+    }
+    
+    while(stacks.length>0) { 
+        count+=1;
+        let node = stacks.pop();
+        let right = node.right;
+        if(right) {
+            stacks.push(right);
+            while(right.left) {
+                stacks.push(right.left);
+                right = right.left;
+            }
+        }
+        
+        if(count === k) {
+            return node.val;
+        }
+    }
+    
 };
