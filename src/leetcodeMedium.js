@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-28 21:57:40
+ * @LastEditTime: 2019-09-29 15:05:20
  */
 /**
  * @ leetcode  三数之和
@@ -516,3 +516,33 @@ function getTree(preorder,inorder) {
     
     return  root;
 }
+
+
+/**
+ * // Definition for a Node.
+ * function Node(val,left,right,next) {
+ *    this.val = val;
+ *    this.left = left;
+ *    this.right = right;
+ *    this.next = next;
+ * };
+ */
+/**
+ * @name leetcode 从前序与中序遍历序列构造二叉树
+ * @param {Node} root
+ * @return {Node}
+ */
+var connect = function(root) {
+    if(!root) return null;
+    
+    if(root.left!=null){
+        root.left.next=root.right;
+        if(root.next!=null)
+            root.right.next=root.next.left;
+    }
+
+    connect(root.left);
+    connect(root.right);
+    
+    return root;
+};
