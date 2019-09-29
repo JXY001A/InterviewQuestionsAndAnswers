@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-29 15:05:20
+ * @LastEditTime: 2019-09-29 16:05:39
  */
 /**
  * @ leetcode  三数之和
@@ -545,4 +545,33 @@ var connect = function(root) {
     connect(root.right);
     
     return root;
+};
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @name leetcode 二叉搜索树中第K小的元素
+ * @param {TreeNode} root
+ * @param {number} k
+ * @return {number}
+ */
+var kthSmallest = function(root, k) {
+    if(!root || k == 0) return;
+    
+    function iteatorTree(node,list) {
+        if(node === null) return;
+        iteatorTree(node.left,list);
+        list.push(node.val);
+        iteatorTree(node.right,list);
+    }
+    
+    const list = [];
+    iteatorTree(root,list);
+    return list[k-1];
 };
