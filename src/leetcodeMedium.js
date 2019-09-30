@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-29 16:22:30
+ * @LastEditTime: 2019-09-30 13:40:22
  */
 /**
  * @ leetcode  三数之和
@@ -608,4 +608,44 @@ var kthSmallest = function(root, k) {
         }
     }
     
+};
+
+/**
+ * @name leetcode 岛屿数量
+ * @param {character[][]} grid
+ * @return {number}
+ */
+var numIslands = function(grid) {
+    if(grid === null || grid.length === 0) return 0;
+    const book = {};
+    const next = [[0,1],[1,0],[0,-1],[-1,0]];
+    
+    const col = grid.length -1;
+    const row = grid[0].length -1;
+    
+    let count = 0;
+    
+    for(let i=0;i<=col;i+=1) {
+        for(let j=0;j<=row;j+=1) {
+            if(grid[i][j] == 1) {
+                def(i,j);
+                count += 1;
+            }
+        }
+    }
+    
+    function def(x,y) {
+        for(let i=0;i<4;i+=1) {
+            let tx = x + next[i][0];
+            let ty = y + next[i][1];
+            
+            if(tx < 0 || tx > col || ty < 0 || ty > row || grid[tx][ty] == 0)  
+                continue;
+            
+            grid[tx][ty] = 0;
+            def(tx,ty);
+        }
+    }
+
+    return count;
 };
