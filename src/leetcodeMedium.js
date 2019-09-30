@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-30 13:40:22
+ * @LastEditTime: 2019-09-30 16:48:26
  */
 /**
  * @ leetcode  三数之和
@@ -648,4 +648,38 @@ var numIslands = function(grid) {
     }
 
     return count;
+};
+
+
+/**
+ * @name leetcode 全排列
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+    if(nums.length === 0) return [[]];
+    const len = nums.length;
+    const result = [];
+    let tempSubRet = [];
+    const book = [];
+    
+    function dfs(step) {
+        if(len == step) {
+            result.push(tempSubRet.map(num=>num));
+            return;
+        }
+        
+        for(let i=0;i<len;i+=1) {
+            if(book[i] !== 1) {
+                tempSubRet[step] = nums[i];
+                book[i] = 1;
+                dfs(step+1);
+                book[i] = 0;
+            }
+        }
+    }
+    
+    dfs(0);
+    
+    return result;
 };
