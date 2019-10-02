@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-02 11:48:46
+ * @LastEditTime: 2019-10-02 14:11:58
  */
 /**
  * @ leetcode  三数之和
@@ -686,7 +686,7 @@ var permute = function(nums) {
 
 
 /**
- *  @name leetcode 电话号码的字母组合
+ * @name leetcode 电话号码的字母组合
  * @param {string} digits
  * @return {string[]}
  */
@@ -728,4 +728,26 @@ var letterCombinations = function(digits) {
     digits = digits.map((num)=>maps[num]);
     
     return dfs(digits,[]);    
+};
+
+/**
+ * @name leetcode 子集
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    function dfs(result,tempList,nums,start) {
+        result.push([...tempList]);
+        
+        for(let i=start,len = nums.length;i<len;i+=1) {
+            tempList.push(nums[i]);
+            dfs(result,tempList,nums,i+1);
+            tempList.pop();
+        }
+    }
+    
+    const result = [];
+    dfs(result,[],nums,0);
+    
+    return result;
 };
