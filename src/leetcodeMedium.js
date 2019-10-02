@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-09-30 16:48:26
+ * @LastEditTime: 2019-10-02 11:48:46
  */
 /**
  * @ leetcode  三数之和
@@ -682,4 +682,50 @@ var permute = function(nums) {
     dfs(0);
     
     return result;
+};
+
+
+/**
+ *  @name leetcode 电话号码的字母组合
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function(digits) {
+    digits = digits.split('').filter(num=>num!==1);
+    if(digits.length == 0) return [];
+    
+    let maps = {
+        '2':['a','b','c'],
+        '3':['d','e','f'],
+        '4':['g','h','i'],
+        '5':['j','k','l'],
+        '6':['m','n','o'],
+        '7':['p','q','r','s'],
+        '8':['t','u','v'],
+        '9':['w','x','y','z'],
+    };
+    
+    function dfs(digits,result) {
+        if(digits.length==0) return result;
+        
+        letter = digits.shift();
+        if(result.length == 0) {
+            result.push(...letter);
+        }else{
+            const tempResult = [];
+            letter.forEach((char)=>{
+                result.forEach((str)=>{
+                    tempResult.push(str + char);
+                });
+            });
+            result = tempResult;
+        }
+        
+        return dfs(digits,result);        
+    }
+    
+    
+    digits = digits.map((num)=>maps[num]);
+    
+    return dfs(digits,[]);    
 };
