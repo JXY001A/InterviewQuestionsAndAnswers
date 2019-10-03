@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-03 15:16:24
+ * @LastEditTime: 2019-10-03 18:08:18
  */
 /**
  * @ leetcode  三数之和
@@ -777,4 +777,55 @@ var generateParenthesis = function(n) {
     dfs(ret,'',n,0,0);
     
     return  ret; 
+};
+
+/**
+ * @name leetcode 单词搜索
+ * @param {character[][]} board
+ * @param {string} word
+ * @return {boolean}
+ */
+var exist = function(board, word) {
+    if(board.length == 0) return false;
+    
+    const rows =  board.length;
+    const cols =  board[0].length;
+    const next = [[0,1],[1,0],[0,-1],[-1,0]];
+    
+    function dfs(i,j,index,word,board) {
+        if(word.length === index) return true;
+        
+        if(i<0 || j < 0 || i > rows-1 ||  j > cols-1 || board[i][j] != word.charAt(index)) return false;
+        
+        board[i][j] = null;
+        
+        for(let k = 0;k<next.length;k+=1) {
+            if(dfs(i+next[k][0] ,j+next[k][1],index+1,word,board)) {
+                return true;
+            }
+        }
+        
+        /*
+            [
+                ["C", "A", "A"],
+                ["A", "A", "A"],
+                ["B", "C", "D"]
+            ]
+            
+            "AAB"  
+        */
+        // 目的是防止以上情况的产生，也就是说在一次循环遍历完成后别难过没有找到正确的结果时，还原原来的结果
+        board[i][j] = word.charAt(index);
+    }
+    
+    
+    for(let i=0;i<rows;i+=1) {
+        for(let j=0;j<cols;j+=1) {
+            if(board[i][j] === word.charAt(0)) {
+                if(dfs(i,j,0,word,board)) return true; 
+            }
+        }
+    }
+    
+    return false;
 };
