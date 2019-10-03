@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-02 14:11:58
+ * @LastEditTime: 2019-10-03 15:16:24
  */
 /**
  * @ leetcode  三数之和
@@ -750,4 +750,31 @@ var subsets = function(nums) {
     dfs(result,[],nums,0);
     
     return result;
+};
+
+
+/**
+ * @name leetcode 生成括号
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function(n) {
+    function dfs(result,cur,n,left,right) {
+        if(right === n) {
+            result.push(cur);
+            return;
+        }
+        
+        if(left < n) {
+            dfs(result,cur+"(", n ,left+1,right);
+        }
+        if(right < left) {
+            dfs(result,cur+")", n ,left,right+1)
+        }
+    }
+    
+    const ret = [];
+    dfs(ret,'',n,0,0);
+    
+    return  ret; 
 };
