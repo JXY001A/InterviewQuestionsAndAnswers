@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-03 18:08:18
+ * @LastEditTime: 2019-10-04 20:50:14
  */
 /**
  * @ leetcode  三数之和
@@ -785,7 +785,7 @@ var generateParenthesis = function(n) {
  * @param {string} word
  * @return {boolean}
  */
-var exist = function(board, word) {
+var exist = function(board, word) {  
     if(board.length == 0) return false;
     
     const rows =  board.length;
@@ -828,4 +828,30 @@ var exist = function(board, word) {
     }
     
     return false;
+};
+
+
+/**
+ * @name leetcode  颜色分类
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var sortColors = function(nums) {
+    let records = [0,0,0];
+    nums.forEach((n)=>{
+        records[n] += 1;
+    });
+    
+    for(let i=0,len=nums.length;i<len;i+=1) {
+        if(records[0]) {
+            nums[i] = 0;
+            records[0]-=1;
+        }else if(records[1]) {
+            nums[i] = 1;
+            records[1]-=1;
+        }else{
+            nums[i] = 2;
+            records[2]-=1;
+        }
+    }
 };
