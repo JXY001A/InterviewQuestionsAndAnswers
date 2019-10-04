@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-04 20:50:14
+ * @LastEditTime: 2019-10-04 22:17:39
  */
 /**
  * @ leetcode  三数之和
@@ -855,3 +855,48 @@ var sortColors = function(nums) {
         }
     }
 };
+
+/**
+ * @name leetcode  前 K 个高频元素
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function(nums, k) {
+    function swap(arr,i,j) {
+        let temp = arr[i];
+        arr[i] =  arr[j];
+        arr[j] = temp;
+    }
+    
+    if(nums.length<=1) return nums;
+    
+    const temp = {};
+    let newK = k;
+    
+    nums.forEach((n)=>{
+        if(temp[n] == undefined) {
+            temp[n] = 1;
+        }else{
+            temp[n] += 1;
+        }
+    });
+    
+    const numsKey = Object.keys(temp);
+    const records = Object.values(temp);
+    
+    // if(records.length <= 1) return numsKey;
+    
+    for(let i=0,len=records.length;i<len;i+=1) {
+        if(k-i === 0) return numsKey.slice(numsKey.length-k);
+        
+        for(let j=0;j<len-i-1;j+=1) {
+            if(records[j] > records[j+1]) {
+                swap(records,j,j+1);
+                swap(numsKey,j,j+1);
+            }
+        }
+    }
+    
+    return numsKey.slice(numsKey.length-k); 
+}
