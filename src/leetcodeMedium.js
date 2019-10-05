@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-04 22:17:39
+ * @LastEditTime: 2019-10-05 12:55:43
  */
 /**
  * @ leetcode  三数之和
@@ -900,3 +900,48 @@ var topKFrequent = function(nums, k) {
     
     return numsKey.slice(numsKey.length-k); 
 }
+
+/**
+ * @name leetcode  数组中的第K个最大元素 ,归并算法实现
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findKthLargest = function(nums, k) {
+    
+    function mergeSort(nums,l,r) {
+        if(l>=r) return ;
+        
+        const mid = Math.floor((l+r)/2);
+        
+        mergeSort(nums,l,mid);
+        mergeSort(nums,mid+1,r);
+        
+        merge(nums,l,mid,r);
+    }
+    
+    function merge(nums,l,mid,r) {
+        const tempNums = nums.slice(l,r+1);
+        let i = l,
+            j = mid+1;
+        
+        for(let k=l;k<=r;k+=1) {
+            if(i>mid) {
+                nums[k] =  tempNums[j-l];
+                j+=1;
+            }else if(j>r) {
+                nums[k] =  tempNums[i-l];
+                i+=1;
+            } else if(tempNums[j-l] < tempNums[i-l]) {
+                nums[k] =  tempNums[i-l];
+                i+=1;
+            }else{
+                nums[k] =  tempNums[j-l];
+                j+=1;
+            }
+        }
+    }
+    mergeSort(nums,0,nums.length-1);
+    
+    return nums[k-1];
+};

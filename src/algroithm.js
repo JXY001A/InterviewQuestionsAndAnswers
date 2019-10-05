@@ -274,7 +274,7 @@ function mergeSort(nums) {
             } else if (j > r) {
                 arr[t] = tempArr[i - l];
                 i += 1;
-            } else if (arr[i] > arr[j]) {
+            } else if (tempArr[i-l] > tempArr[j-l]) {
                 arr[t] = tempArr[j - l];
                 j += 1;
             } else {
