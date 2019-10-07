@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-05 12:55:43
+ * @LastEditTime: 2019-10-07 22:31:27
  */
 /**
  * @ leetcode  三数之和
@@ -944,4 +944,27 @@ var findKthLargest = function(nums, k) {
     mergeSort(nums,0,nums.length-1);
     
     return nums[k-1];
+};
+
+
+/**
+ * @name leetcode  寻找峰值
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findPeakElement = function(nums) {
+    let l = 0,
+        r = nums.length - 1;
+    
+    while(l<r) {
+        const mid = Math.floor((l+r)/2);
+        if(nums[mid+1] > nums[mid]) {
+            l = mid+1
+        }else{
+            r = mid;
+        }
+    }
+    
+    return l;
+    
 };
