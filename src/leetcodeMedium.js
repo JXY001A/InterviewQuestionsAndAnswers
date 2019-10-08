@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-07 22:31:27
+ * @LastEditTime: 2019-10-08 09:28:43
  */
 /**
  * @ leetcode  三数之和
@@ -967,4 +967,37 @@ var findPeakElement = function(nums) {
     
     return l;
     
+};
+
+/**
+ * @anme leetcode 在排序数组中查找元素的第一个和最后一个位置
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var searchRange = function(nums, target) {
+    function findStartIndex(nums, target) {
+        let l = 0;
+        let r = nums.length - 1;
+        while (l < r) {
+            const mid = Math.floor((l + r) / 2);
+            if (nums[mid] >= target) r = mid;
+            else l = mid + 1;
+        }
+        return nums[l] === target ? l : -1;
+    }
+    function findEndIndex(nums, target) {
+        let l = 0;
+        let r = nums.length - 1;
+        while (l < r) {
+            const mid = Math.floor((l + r + 1) / 2);
+            if (nums[mid] <= target) l = mid;
+            else r = mid - 1;
+        }
+        return nums[l] === target ? l : -1
+    }
+    
+    const start = findStartIndex(nums, target);
+    const end = findEndIndex(nums, target);
+    return [start, end];
 };
