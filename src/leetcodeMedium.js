@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-09 09:21:02
+ * @LastEditTime: 2019-10-09 15:58:28
  */
 /**
  * @ leetcode  三数之和
@@ -1013,4 +1013,45 @@ var searchRange = function(nums, target) {
     }
     
     return [indexOf(nums,target),lastIndexOf(nums,target)]
+};
+
+
+/**
+ * @anme leetcode 合并区间
+ * @param {number[][]} intervals
+ * @return {number[][]}
+ */
+var merge = function(intervals) {
+    
+    function intersected(a,b) {
+        // 1,6   8,10
+        if(a[0]>b[1] || b[0] > a[1]) return false;
+        return true;
+    }
+    
+    function mergeTwo(a,b) {
+        return [Math.min(a[0],b[0]),Math.max(a[1],b[1])];
+    }
+    
+    const ret = [];
+    intervals.sort((a, b) => a[0] - b[0]);
+    
+    for(let i=0;i<intervals.length;i+=1) {
+        const pre = ret[ret.length-1];
+        const curr = intervals[i].sort((a,b)=>a-b);
+        
+        if(pre === void 0) {
+            ret.push(curr);
+        }else{
+            
+            if(intersected(pre,curr)) {
+                ret[ret.length-1] = mergeTwo(pre,curr);
+            }else{
+                ret.push(curr);
+            }
+             
+        }
+    }
+    
+    return ret;
 };
