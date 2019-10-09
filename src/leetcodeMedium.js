@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-09 15:58:28
+ * @LastEditTime: 2019-10-09 16:09:01
  */
 /**
  * @ leetcode  三数之和
@@ -309,7 +309,7 @@ var addTwoNumbers = function(l1, l2) {
  * }
  */
 /**
- * c
+ * @name 奇偶链表
  * @param {ListNode} head
  * @return {ListNode}
  */
@@ -343,7 +343,7 @@ var oddEvenList = function(head) {
  */
 
 /**
- * @ leetcode 相交链表
+ * @@name leetcode 相交链表
  * @param {ListNode} headA
  * @param {ListNode} headB
  * @return {ListNode}
@@ -399,7 +399,7 @@ var getIntersectionNode = function(headA, headB) {
  * }
  */
 /**
- * @ leetcode 中序遍历，迭代实现
+ * @name leetcode 二叉树中序遍历，迭代实现
  * @param {TreeNode} root
  * @return {number[]}
  */
@@ -436,7 +436,7 @@ var inorderTraversal = function(root) {
  * }
  */
 /**
- * @ leetcode 二叉树的锯齿形层次遍历
+ * @@name leetcode 二叉树的锯齿形层次遍历
  * @param {TreeNode} root
  * @return {number[][]}
  */
@@ -528,7 +528,7 @@ function getTree(preorder,inorder) {
  * };
  */
 /**
- * @name leetcode 从前序与中序遍历序列构造二叉树
+ * @name leetcode 填充每个节点的下一个右侧节点指针
  * @param {Node} root
  * @return {Node}
  */
