@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-08 09:28:43
+ * @LastEditTime: 2019-10-09 09:21:02
  */
 /**
  * @ leetcode  三数之和
@@ -976,28 +976,41 @@ var findPeakElement = function(nums) {
  * @return {number[]}
  */
 var searchRange = function(nums, target) {
-    function findStartIndex(nums, target) {
-        let l = 0;
-        let r = nums.length - 1;
-        while (l < r) {
-            const mid = Math.floor((l + r) / 2);
-            if (nums[mid] >= target) r = mid;
-            else l = mid + 1;
+    
+    function indexOf(nums,target) {
+        let l = 0,
+            r = nums.length-1;
+        while(l<r) {
+            const mid = Math.floor((l+r)/2);
+            
+            if(nums[mid] >= target) {
+                r = mid;
+            }else{
+                l = mid+1;
+            }
+            
         }
-        return nums[l] === target ? l : -1;
-    }
-    function findEndIndex(nums, target) {
-        let l = 0;
-        let r = nums.length - 1;
-        while (l < r) {
-            const mid = Math.floor((l + r + 1) / 2);
-            if (nums[mid] <= target) l = mid;
-            else r = mid - 1;
-        }
-        return nums[l] === target ? l : -1
+        return nums[l] === target ? l:-1;
     }
     
-    const start = findStartIndex(nums, target);
-    const end = findEndIndex(nums, target);
-    return [start, end];
+    
+    function lastIndexOf(nums,target) {
+        let l = 0,
+            r = nums.length-1;
+        
+        while(l<r) {   
+            // [5,7,7,8,8,10] , 8 例子中：l=4,r=5 的时候，  const mid = Math.floor((l + r)/2); 会永远等于 4，陷入无限循环中
+            const mid = Math.floor((l + r + 1)/2);
+            
+            if(nums[mid] <= target) {
+                l = mid;
+            }else{
+                r = mid-1;
+            }
+        }
+        
+        return nums[l] === target ? l : -1;
+    }
+    
+    return [indexOf(nums,target),lastIndexOf(nums,target)]
 };
