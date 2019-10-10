@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-09 16:09:01
+ * @LastEditTime: 2019-10-10 22:30:51
  */
 /**
  * @ leetcode  三数之和
@@ -1054,4 +1054,46 @@ var merge = function(intervals) {
     }
     
     return ret;
+};
+
+
+
+/**
+ * @anme leetcode 搜索旋转排序数组
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(nums, target) {
+    let l = 0,
+        r = nums.length - 1;
+    
+    while(l<=r) {
+        const mid = Math.floor((l+r)/2);
+        const temp = nums[l];
+        
+        if(nums[mid] === target ) return mid;
+        
+        if(nums[mid] === temp) {
+           l = mid+1;
+        }else if(temp > nums[mid]) {
+            // [mid,r] 有序
+            if(target<=nums[r] && target >= nums[mid]) {
+                l = mid+1;
+            }else{
+                r = mid-1;
+            }
+        } else {
+            // [l,mid] 有序
+            if(target>=nums[l] && target<=nums[mid]) {
+                r = mid-1;
+            }else{
+                l = mid+1;
+            }
+        }
+        
+        
+    }
+     
+    return -1;
 };
