@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-09 16:19:32
+ * @LastEditTime: 2019-10-10 22:33:13
  -->
 
 # InterviewQuestionsAndAnswers
@@ -95,6 +95,7 @@
 26. [寻找峰值](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/5113a75ade22c84bad3c4b9c9ce38512dbabdd40/src/leetcodeMedium.js#L955)
 27. [在排序数组中查找元素的第一个和最后一个位置](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/5113a75ade22c84bad3c4b9c9ce38512dbabdd40/src/leetcodeMedium.js#L978)
 28. [合并区间](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/5113a75ade22c84bad3c4b9c9ce38512dbabdd40/src/leetcodeMedium.js#L1024)
+29. [搜索旋转排序数组](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/c25ec32cfc88f25e74e54d99b3660c8325302c21/src/leetcodeMedium.js#L1067)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
