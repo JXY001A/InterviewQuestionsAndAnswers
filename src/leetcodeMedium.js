@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-10 22:30:51
+ * @LastEditTime: 2019-10-11 16:47:03
  */
 /**
  * @ leetcode  三数之和
@@ -1094,6 +1094,31 @@ var search = function(nums, target) {
         
         
     }
-     
     return -1;
+};
+
+
+/**
+ * @anme 搜索二维矩阵 II
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
+var searchMatrix = function(matrix, target) {
+    if(!matrix[0]) return false;
+    
+    const rows = matrix.length; 
+    const cols = matrix[0].length;
+    let j = cols-1, 
+        i = 0;
+    while( j >= 0 &&  i < rows) {
+        if(matrix[i][j] === target) {
+            return true;
+        }else if(matrix[i][j] > target) {
+            j-=1;
+        }else{
+            i+=1; 
+        }
+    }
+    return false;
 };
