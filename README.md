@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-11 17:03:48
+ * @LastEditTime: 2019-10-13 22:08:49
  -->
 
 # InterviewQuestionsAndAnswers
@@ -97,6 +97,7 @@
 28. [合并区间](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/5113a75ade22c84bad3c4b9c9ce38512dbabdd40/src/leetcodeMedium.js#L1024)
 29. [搜索旋转排序数组](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/c25ec32cfc88f25e74e54d99b3660c8325302c21/src/leetcodeMedium.js#L1067)
 30. [搜索二维矩阵 II](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/134a4836ece80192dbe87121db0e1b87f5cab4ed/src/leetcodeMedium.js#L1107)
+31. [跳跃游戏](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/291cf04bb9eea3416d0e601a2407d3a62d319317/src/leetcodeMedium.js#L1132)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
