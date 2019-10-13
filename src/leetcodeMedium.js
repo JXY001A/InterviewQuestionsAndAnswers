@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-11 16:47:03
+ * @LastEditTime: 2019-10-13 22:05:06
  */
 /**
  * @ leetcode  三数之和
@@ -1121,4 +1121,21 @@ var searchMatrix = function(matrix, target) {
         }
     }
     return false;
+};
+
+
+/**
+ * @anme 跳跃游戏
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var canJump = function(nums) {
+    // 思路： 我们知道一点 (nums[i-1] + (i-1)) > i 的时候就说明 能到达 i 点位。那么接下来一次类推 ，循环完毕找到能走到的最远位置 max， max 大于 length-1 就说明能走到最后一个位置。 
+    let max = 0;
+    for(let i=0;i<nums.length;i+=1) {
+        if(max<i) return false;
+        max = Math.max(max,nums[i]+i);
+    }
+    
+    return max >= (nums.length - 1);
 };

@@ -1,53 +1,30 @@
-
-
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
+/*
+ * @description: 
+ * @author: JXY
+ * @Date: 2019-08-28 12:33:14
+ * @Email: JXY001a@aliyun.com
+ * @LastEditTime: 2019-08-28 12:33:14
  */
 /**
- * @param {TreeNode} root
+ * @param {number[][]} matrix
+ * @param {number} target
  * @return {boolean}
  */
-var isSymmetric1 = function(root) {
-
-    function _isSymmetric(root1,root2) {
-        if(root1 === null && root2 === null ) return true;
-        if(root1 === null && root2 !== null ) return false;
-        if(root1 !== null && root2 === null ) return false;
-        if(root1.val !== root2.val) return false;
-        return _isSymmetric(root1.left,root2.right) && _isSymmetric(root1.right,root2.left);
-    } 
+var searchMatrix = function(matrix, target) {
+    if(!matrix[0]) return false;
     
-    if(root === null) return true;
-    return _isSymmetric(root.left,root.right);
-};
-
-
-var isSymmetric2 = function(root) {
-    if(root === null) return true;
-    let nodeList = [root.left,root.right];
-    while(nodeList.length !==0 ) {
-        let leftRoot = nodeList.shift();
-        let rightRoot = nodeList.shift();
-       
-        if(leftRoot === null && rightRoot !== null) return false;
-        
-        if(leftRoot !== null && rightRoot === null) return false;
-        
-        if(leftRoot && rightRoot) {
-            if(leftRoot.val !== rightRoot.val)  return false;
-           
-            nodeList.push(leftRoot.left);
-            nodeList.push(rightRoot.right);
-
-            nodeList.push(leftRoot.right);
-            nodeList.push(rightRoot.left);
+    const rows = matrix.length; //1
+    const cols = matrix[0].length //2
+    let j = cols-1, 
+        i = 0;
+    while( j >= 0 &&  i < rows) {
+        if(matrix[i][j] === target) {
+            return true;
+        }else if(matrix[i][j] > target) {
+            j-=1;
+        }else{
+            i+=1; 
         }
-        
-       
-    } 
-    return true;
+    }
+    return false;
 };
