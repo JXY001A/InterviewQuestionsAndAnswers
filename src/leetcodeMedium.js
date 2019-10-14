@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-13 22:05:06
+ * @LastEditTime: 2019-10-14 22:49:39
  */
 /**
  * @ leetcode  三数之和
@@ -1138,4 +1138,30 @@ var canJump = function(nums) {
     }
     
     return max >= (nums.length - 1);
+};
+
+
+/**
+ *  @anme 不同路径
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+var uniquePaths = function(m, n) {
+    const dp = [];
+    for(let i=0;i<n;i+=1) {
+        dp[i] = [1];
+    }
+    
+    for(let i=0;i<m;i+=1) {
+        dp[0][i] = 1;
+    }
+    
+    for(let i=1;i<n;i+=1) {
+        for(let j=1;j<m;j+=1) {
+            // 到达 [i,j] 位置只可能来自于左侧和上面
+            dp[i][j] = dp[i][j-1] + dp[i-1][j];
+        }
+    }
+    return  dp[n-1][m-1];
 };
