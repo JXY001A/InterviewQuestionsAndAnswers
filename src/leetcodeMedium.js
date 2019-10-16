@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-14 22:49:39
+ * @LastEditTime: 2019-10-16 13:33:59
  */
 /**
  * @ leetcode  三数之和
@@ -1164,4 +1164,27 @@ var uniquePaths = function(m, n) {
         }
     }
     return  dp[n-1][m-1];
+};
+
+
+/**
+ * @name 零钱兑换
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+    if(amount===0) return 0;
+    
+    const dp = Array(amount + 1).fill(Number.MAX_SAFE_INTEGER);
+    dp[0] = 0;
+    
+    for(let i=1;i<=amount;i+=1) {
+        for(let j=0;j<coins.length;j+=1){
+            if(i - coins[j]>=0) {
+                dp[i] = Math.min(dp[i],dp[i - coins[j]]+1);
+            }
+        }
+    }
+    return  dp[amount] === Number.MAX_SAFE_INTEGER ? -1 : dp[amount];
 };
