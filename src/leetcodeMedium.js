@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-16 13:33:59
+ * @LastEditTime: 2019-10-19 12:14:41
  */
 /**
  * @ leetcode  三数之和
@@ -1187,4 +1187,38 @@ var coinChange = function(coins, amount) {
         }
     }
     return  dp[amount] === Number.MAX_SAFE_INTEGER ? -1 : dp[amount];
+};
+
+
+/**
+ * @name Longest Increasing Subsequence
+ * @param {number[]} nums
+ * @return {number}
+ */
+var lengthOfLIS = function(nums) {
+    const len = nums.length;
+    
+    // 填充一的原因是 nums 中的单个元素都可以认为是一个上升子序列
+    const dp = Array(len).fill(1);
+    const LIS = nums.map(item=>[item]);
+    
+    for(let i=1;i<len;i+=1) {
+        for(let j=0;j<i;j+=1) {
+            if(nums[i] > nums [j]) {
+                // 考虑：<1,2,3,4,0,5> ，理解 Math.max(dp[j] + 1,dp[i]) 
+                dp[i] = Math.max(dp[j] + 1,dp[i]);
+                if(LIS[i].length < LIS[j].length + 1) {
+                    // 同时抽取子序列
+                    LIS[i] = [...LIS[j],nums[i]];
+                }
+            }
+        }
+    }
+    // 显示子序列
+    console.log(LIS);
+    let res = 0;
+    for(let i=0;i<dp.length;i+=1) {
+        res = Math.max(res,dp[i]);
+    }
+    return res;
 };
