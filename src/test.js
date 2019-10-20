@@ -5,26 +5,44 @@
  * @Email: JXY001a@aliyun.com
  * @LastEditTime: 2019-08-28 12:33:14
  */
-/**
- * @param {number[][]} matrix
- * @param {number} target
- * @return {boolean}
- */
-var searchMatrix = function(matrix, target) {
-    if(!matrix[0]) return false;
-    
-    const rows = matrix.length; //1
-    const cols = matrix[0].length //2
-    let j = cols-1, 
-        i = 0;
-    while( j >= 0 &&  i < rows) {
-        if(matrix[i][j] === target) {
-            return true;
-        }else if(matrix[i][j] > target) {
-            j-=1;
+const root = {
+    val:1,
+    left:{
+        val:2,
+        left:null,
+        right:null,
+    },
+    right:{
+        val:3,
+        left:{
+            val:4,
+            left:null,
+            right:null,
+        },
+        right:{
+            val:5,
+            left:null,
+            right:null,
+        },
+    }
+};
+
+var serialize = function(root) {
+    const treeList = [root];
+    const dp = [];
+    debugger;
+    while(treeList.length) {
+        let node = treeList.unshift();
+        if(node) {
+            dp.push(node.val);
+            treeList.push(node.left);
+            treeList.push(node.right);
         }else{
-            i+=1; 
+            dp.push(null);
         }
     }
-    return false;
+    
+    return JSON.toString(dp);
 };
+
+serialize(root);

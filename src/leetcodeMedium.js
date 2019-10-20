@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-19 12:14:41
+ * @LastEditTime: 2019-10-20 12:56:59
  */
 /**
  * @ leetcode  三数之和
@@ -1222,3 +1222,87 @@ var lengthOfLIS = function(nums) {
     }
     return res;
 };
+
+
+
+/* 设计问题 二叉树的序列化与反序列化 Begin*/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+function TreeNode  (val) {
+  this.val = val;
+  this.left = this.right = null;
+}
+/**
+ * Encodes a tree to a single string.
+ *
+ * @param {TreeNode} root
+ * @return {string}
+ */
+var serialize = function(root) {
+    if(root === null) return '';
+    const treeList = [root];
+    const dp = [];
+    
+    while(treeList.length !== 0) {
+        let node = treeList.shift();
+        if(node) {
+            dp.push(node.val);
+            treeList.push(node.left);
+            treeList.push(node.right);
+        }else{
+            dp.push(null);
+        }
+    }
+    
+    return JSON.stringify(dp);
+};
+
+/**
+ * Decodes your encoded data to tree.
+ *
+ * @param {string} data
+ * @return {TreeNode}
+ */
+var deserialize = function(data) {
+    if(data === '') return null;
+    
+    // "[1,2,3,1,3,2,4,null,null,null,null,null,null,null,null]"
+    const treeList = JSON.parse(data);
+    const rootVal = treeList.shift();
+    const root = new TreeNode(rootVal);
+    
+    const levelNodeList = [root];
+    while(levelNodeList.length !== 0) {
+        let parent = levelNodeList.shift();
+        if(parent === null) continue;
+
+        let letfNode = null,
+            rightNode= null;
+
+        let leftVal = treeList.shift(),
+            rightVal = treeList.shift();
+
+        if(leftVal !== null) {
+            letfNode = new TreeNode(leftVal);
+        }
+
+        if(rightVal !== null) {
+            rightNode = new TreeNode(rightVal);
+        }
+
+        parent.left = letfNode;
+        parent.right = rightNode;
+
+        levelNodeList.push(letfNode,rightNode);
+    } 
+    
+    return  root;
+};
+
+/* 设计问题 二叉树的序列化与反序列化 End */
