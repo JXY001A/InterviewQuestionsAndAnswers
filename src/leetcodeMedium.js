@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-20 12:56:59
+ * @LastEditTime: 2019-10-21 21:21:28
  */
 /**
  * @ leetcode  三数之和
@@ -1306,3 +1306,21 @@ var deserialize = function(data) {
 };
 
 /* 设计问题 二叉树的序列化与反序列化 End */
+
+
+
+/**
+ * @name leetcode 阶乘后的零 
+ * @param {number} n
+ * @return {number}
+ */
+var trailingZeroes = function(n) {
+    if(n === 0) return 0;
+    // n = 5 时就会有1个0，n = 10 时会有 两个0，可以将 n/ 10 得到因子只含有一个5时的0的个数。之后，再将 n / 25 （因为 25 = 5 * 5）得到因子含有两个5时的0的个数。依次 n/125…
+    let count = 0;
+    while(n>1) {
+        n = parseInt(n/5,10);
+        count += n;
+    }
+    return count;
+};
