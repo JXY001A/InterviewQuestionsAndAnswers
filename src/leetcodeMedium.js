@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-21 21:21:28
+ * @LastEditTime: 2019-10-22 21:38:07
  */
 /**
  * @ leetcode  三数之和
@@ -1323,4 +1323,31 @@ var trailingZeroes = function(n) {
         count += n;
     }
     return count;
+};
+
+
+/**
+ * @param {string} s
+ * @return {number}
+ * @name leetcode Excel表列序号
+ */
+var titleToNumber = function(s) {
+    if(s.length === 0) return 0;
+    // 本质上就是 26 进制技计数，不同的位数 分别为：个，十，百，千，万，亿……
+    const charMap = {A:1, B:2, C:3, D:4, E:5, F:6, G:7, H:8, I:9, J:10, K:11, L:12, M:13, N:14, O:15, P:16, Q:17, R:18, S:19, T:20, U:21, V:22, W:23, X:24, Y:25, Z:26};
+    
+    // 记录位数
+    let unit = 0;
+    let nums = 0;
+    // 循环使用
+    let digit = s.length-1;
+    
+    while(digit >= 0) {
+        // Math.pow(26,unit) 相当于 个位：10^0 ，十位：10^1  千位: 10^2  万：10^3 ....
+        nums +=  charMap[s[digit]] * Math.pow(26,unit);
+        unit += 1;
+        digit -= 1;
+    }
+     
+    return nums;
 };
