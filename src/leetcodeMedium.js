@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-22 21:38:07
+ * @LastEditTime: 2019-10-23 22:36:54
  */
 /**
  * @ leetcode  三数之和
@@ -1350,4 +1350,44 @@ var titleToNumber = function(s) {
     }
      
     return nums;
+};
+
+
+/**
+ * @name leetcode Pow(x, n)
+ * @param {number} x
+ * @param {number} n
+ * @return {number}
+ */
+var myPow = function(x, n) {
+    if(n==0) return 1;
+    if(n==1) return x;
+    if(x==0) return 0;
+    if(x==1) return 1;
+    
+
+    const powerSymbol = n > 0 ? 1 : -1;
+    
+    n*=powerSymbol;
+    
+    let result = 1;
+    
+    while(n>0) {
+        // 按位与操作，奇数等于成立，反之亦然
+        if(n & 1 === 1) {
+            // 因为是奇数 ，那么二进制的最后一位就是 1，在后面右移一位的时候除了位数的次幂以外，还包括这个1本身所代表的一位，所以在此处做处理
+            // 任何数字右移动都会到达 n === 1 的情况
+            result*=x;
+        }
+        // 注意 n 是 x 的次幂，第一次右移一位相当于 x*x ，第二次右移一位相当于 (x*x) * (x*x) ,一次类推  ，右移与除以二相同
+        n = Math.floor(n/2);
+        x*=x;
+    }
+    
+    if(powerSymbol>0) {
+        return result;
+    }else{
+        return 1.0/result;
+    }
+    
 };
