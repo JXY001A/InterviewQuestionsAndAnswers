@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-22 21:41:18
+ * @LastEditTime: 2019-10-23 22:40:50
  -->
 
 # InterviewQuestionsAndAnswers
@@ -104,6 +104,7 @@
 35. [设计问题 二叉树的序列化与反序列化](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/5219cbedcf99f1dc6c1472eb0797b3e060b79ee8/src/leetcodeMedium.js#L1228)
 36. [阶乘后的零](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/c4464a76f6c87a323aca62b2157e66b6706af424/src/leetcodeMedium.js#L1317)
 37. [Excel表列序号](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/c4464a76f6c87a323aca62b2157e66b6706af424/src/leetcodeMedium.js#L1334)
+38. [Pow(x, n)](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/ab042d703d762f3998166e09ea495cec69a1a860/src/leetcodeMedium.js#L1357)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
