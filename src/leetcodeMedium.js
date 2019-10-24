@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-23 22:36:54
+ * @LastEditTime: 2019-10-24 13:19:17
  */
 /**
  * @ leetcode  三数之和
@@ -1389,5 +1389,34 @@ var myPow = function(x, n) {
     }else{
         return 1.0/result;
     }
+};
+
+
+/**
+ * leetcode x 的平方根
+ * @param {number} x
+ * @return {number}
+ */
+var mySqrt = function(x) {
+    if(x<=1) return x;
     
+    let r =  Math.floor(x/2);
+    let l = 1;
+    let result = 0;
+    while(l<=r) {
+        const mid = Math.floor((l+r)/2);
+        const temp = Math.pow(mid,2);
+        if(temp === x) {
+            return mid;
+        }else if(temp < x) {
+            // 关键点： x 的平方根必须是 x<= mid^2 即 mid<=lgX, 大于则肯定不是。 所以本题目最终目的就是找到一个 数 n , Math.pow(n,2)<= x < pow(n+1,2)
+            // 所以这里每次机会记录一下 Math.pow(n,2)< x 时的 n ,当循环结束的时候就找到了需要的结果
+            result = mid;
+            l = mid+1;
+        }else{
+            r = mid-1;
+        }
+    }
+    
+    return result;
 };
