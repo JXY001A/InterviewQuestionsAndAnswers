@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-24 13:22:35
+ * @LastEditTime: 2019-10-25 13:55:20
  -->
 
 # InterviewQuestionsAndAnswers
@@ -106,6 +106,7 @@
 37. [Excel表列序号](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/c4464a76f6c87a323aca62b2157e66b6706af424/src/leetcodeMedium.js#L1334)
 38. [Pow(x, n)](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/ab042d703d762f3998166e09ea495cec69a1a860/src/leetcodeMedium.js#L1357)
 39. [x 的平方根](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/19b1669a2bffeccb27a0505ac06f4e2fe46d844b/src/leetcodeMedium.js#L1400)
+40. [两数相除](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/4fb91e720eb1037bc7f61a4ee352904572eaf38d/src/leetcodeMedium.js#L1430)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
