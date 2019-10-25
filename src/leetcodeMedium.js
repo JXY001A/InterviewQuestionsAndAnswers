@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-24 13:19:17
+ * @LastEditTime: 2019-10-25 13:49:17
  */
 /**
  * @ leetcode  三数之和
@@ -1420,3 +1420,52 @@ var mySqrt = function(x) {
     
     return result;
 };
+
+/**
+ * @nanme leetcode 两数相除
+ * @param {number} dividend
+ * @param {number} divisor
+ * @return {number}
+ */
+var divide = function(dividend, divisor) {
+    const Max_Number = Math.pow(2,31)-1;
+    
+    if(divisor ===1 || divisor===-1) {
+        let ret = dividend * divisor;
+        return ret > Max_Number ? Max_Number : ret;       
+    }
+    
+    if(dividend===1 || dividend===-1) {
+        return 0;
+    }
+    
+    const dividendFlag = dividend>0 ? 1 : -1;
+    const divisorFlag = divisor>0 ? 1 : -1
+    const flag = dividendFlag * divisorFlag; 
+    
+    dividend = dividend * dividendFlag;
+    divisor  = divisor  * divisorFlag;
+    
+    let l = 0,
+        r = dividend;
+    let result = 0;
+    
+    while(l<=r) {
+        let mid = Math.floor((l+r)/2);
+        let temp = mid * divisor;
+        
+        if(temp===dividend) {
+            return mid * flag;
+        }else if(temp<dividend) {
+            // 因为最终取得都是整数所以： 商 * 除数 <= 被除数 &&  商 >= 0 , 也就是在 [0 , dividend(被除数)] 之间找到一个数 n ,  n*divisor <= dividend < (n+1)*divisor
+            reult = mid;
+            l = mid+1;
+        }else{
+            r = mid-1;     
+        }
+    }
+    
+    return reult * flag;
+    
+};
+
