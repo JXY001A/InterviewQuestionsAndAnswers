@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-25 13:49:17
+ * @LastEditTime: 2019-10-26 11:29:50
  */
 /**
  * @ leetcode  三数之和
@@ -1469,3 +1469,71 @@ var divide = function(dividend, divisor) {
     
 };
 
+/**
+ * @nanme leetcode 分数到小数
+ * @param {number} numerator
+ * @param {number} denominator
+ * @return {string}
+ */
+var fractionToDecimal = function(numerator, denominator) {
+    /*特殊条件判断*/
+    
+    // 分子为0，全部为0
+    if(numerator===0) return  '0';
+    // 分母为0，为空
+    if(denominator === 0) return '';
+    // 分母为1，结果为分子本身，注意符号
+    if(denominator === -1 || denominator === 1) return numerator * denominator + '';
+    
+    
+    
+    const numeratorflag = numerator> 0 ? 1 : -1;
+    const denominatorflag = denominator > 0 ? 1 : -1;
+    const flag = numeratorflag * denominatorflag;
+    
+    numerator *= numeratorflag;
+    denominator *= denominatorflag;
+    
+    // 整数部分处理 
+    result = parseInt(numerator / denominator,10) + '';
+    if(numerator>denominator) {
+        result = parseInt(numerator / denominator,10) + '';
+    }else{
+        result = '0';
+    }
+    
+    let rest = numerator % denominator;
+    if( rest=== 0)  return result; 
+    
+    let decimalStr = '';
+    const tempArr = [];
+    
+    // 代码核心:当余数变为 0 时候，说明数字除尽了。当余数重复的时候说明开始无限循环了，本质上是，‘除法运算的算法实现，被除数小于除数补0，被除数乘 10，……’
+    while(rest !==0 && !tempArr.includes(rest)) {
+        const temp = rest*10;
+        if(temp<denominator) {
+            // 余数乘 10 还是小于除数，则继续补0，乘 10,……
+            decimalStr += '0';
+        }else{
+            // 开始新的除法
+            decimalStr += parseInt(temp/denominator,10);
+        }
+        
+        tempArr.push(rest);
+        rest = temp % denominator;
+    }
+    
+    if(rest!==0) {
+        // tempArr 记录每次相除后的余数，最后当余数还存在，则说明该数字无限循环，那么在余数数组中该余数的第一次出现，直至结束位置的长度就是该循环的长度
+        const reIndex = tempArr.indexOf(rest);
+        // [0,rest) 为正常部分，[rest,length-1] 为循环部分
+        decimalStr = `${decimalStr.substring(0,reIndex)}(${decimalStr.substring(reIndex)})`;
+    }
+    
+    
+    if(flag > 0) {
+        return `${result}.${decimalStr}`;
+    }else{
+        return `-${result}.${decimalStr}`;
+    }
+};
