@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-31 22:32:42
+ * @LastEditTime: 2019-10-31 22:49:29
  -->
 
 # InterviewQuestionsAndAnswers
@@ -108,7 +108,8 @@
 39. [leetcode x 的平方根](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/19b1669a2bffeccb27a0505ac06f4e2fe46d844b/src/leetcodeMedium.js#L1400)
 40. [leetcode 两数相除](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/4fb91e720eb1037bc7f61a4ee352904572eaf38d/src/leetcodeMedium.js#L1430)
 41. [leetcode 分数到小数](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/45f329b45a1182f0b7e4dd12ca120c12240aad41/src/leetcodeMedium.js#L1478)
-42. [leetcode 最长连续递增序列](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/8839633100e1d5b9f895e9180142d3c7d2633146/src/leetcodeMedium.js#L1542)
+42. [leetcode 最长连续递增序列-滑动窗口](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/8839633100e1d5b9f895e9180142d3c7d2633146/src/leetcodeMedium.js#L1542)
+43. [leetcode 最长连续递增序列-动态规划](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/995b60a7ac2223071474cb96defbeaafb937c8fc/src/leetcodeMedium.js#L1565)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
