@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-26 11:29:50
+ * @LastEditTime: 2019-10-31 22:29:17
  */
 /**
  * @ leetcode  三数之和
@@ -1536,4 +1536,26 @@ var fractionToDecimal = function(numerator, denominator) {
     }else{
         return `-${result}.${decimalStr}`;
     }
+};
+
+/**
+ * @name leetcode 最长连续递增序列
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findLengthOfLCIS = function(nums) {
+    if(nums.length === 0) return 0; 
+    
+    let maxLength = 1,
+        j=0;
+    
+    for(i=1;i<nums.length ; i+=1) {
+        if(nums[i-1] < nums[i]) {
+            maxLength = Math.max(maxLength,(i-j+1));
+        }else{
+           j=i;
+        }
+    }
+    
+    return maxLength;
 };
