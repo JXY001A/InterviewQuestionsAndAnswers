@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-31 22:29:17
+ * @LastEditTime: 2019-10-31 22:45:56
  */
 /**
  * @ leetcode  三数之和
@@ -1543,6 +1543,7 @@ var fractionToDecimal = function(numerator, denominator) {
  * @param {number[]} nums
  * @return {number}
  */
+// 滑动窗口实现
 var findLengthOfLCIS = function(nums) {
     if(nums.length === 0) return 0; 
     
@@ -1555,6 +1556,22 @@ var findLengthOfLCIS = function(nums) {
         }else{
            j=i;
         }
+    }
+    
+    return maxLength;
+};
+
+// 动态规划实现
+var findLengthOfLCIS = function(nums) {
+    if(nums.length === 0) return 0; 
+    let lcisList = Array(nums.length).fill(1);
+    
+    let maxLength = 1;
+    for(let i=1;i<nums.length;i+=1) {
+        if(nums[i-1]<nums[i]) {
+           lcisList[i] += lcisList[i-1];
+        }
+        maxLength = Math.max(maxLength,lcisList[i]);
     }
     
     return maxLength;
