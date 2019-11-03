@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-10-31 22:45:56
+ * @LastEditTime: 2019-11-03 20:29:02
  */
 /**
  * @ leetcode  三数之和
@@ -1561,7 +1561,12 @@ var findLengthOfLCIS = function(nums) {
     return maxLength;
 };
 
-// 动态规划实现
+/**
+ * @name leetcode 最长连续递增序列
+ * @param {number[]} nums
+ * @return {number}
+ */
+// leetcode 动态规划实现
 var findLengthOfLCIS = function(nums) {
     if(nums.length === 0) return 0; 
     let lcisList = Array(nums.length).fill(1);
@@ -1575,4 +1580,70 @@ var findLengthOfLCIS = function(nums) {
     }
     
     return maxLength;
+};
+
+
+/**
+ * @name leetcode 最长连续序列
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 初级版本
+var longestConsecutive1 = function(nums) {
+    if(nums.length === 0) return 0;
+    let longest = 0;
+    let map = {};
+    
+    for(let i=0;i<nums.length;i+=1) {
+        if(!map[nums[i]]) {
+            map[nums[i]] = 1;
+            let value1,value2; 
+            let count = 1;
+
+            value1 = value2 = nums[i];
+
+            while(map[value1+1] !== void 0) {
+                count  += 1;
+                value1 += 1;
+            }
+
+             while(map[value2-1]  !== void 0) {
+                count  += 1;
+                value2 -= 1;
+            }
+
+            longest = Math.max(longest,count);
+        }
+    }
+    
+    return longest;
+};
+
+/**
+ * @name leetcode 最长连续序列
+ * @param {number[]} nums
+ * @return {number}
+ * @desc: 思路与上面的其实是一样的，但是不同点在于首先 item 都给放到了 hashTable 中，然后再遍历整个 hashTable ，找到每一个连续序列的最小值开始同统计，节省大量时间
+ */
+// 进阶版本
+var longestConsecutive2 = function(nums) {
+    if(nums.length === 0) return 0;
+    let longest = 0;
+    let map = {};
+    // 关键点1： 所有 item 都已保存进入 map
+    nums.forEach(item => {map[item] = 1;});
+    nums.forEach((item)=>{
+        let count = 1;
+        let currentItem = item;
+        // 关键点2：只从每个连续序列的最小值开始统计
+        if(map[item-1] === undefined) {
+            while(map[currentItem+1] !== undefined) {
+                count+=1;
+                currentItem+=1;
+            }
+            longest  = Math.max(longest,count);
+        }
+    });
+    
+    return longest;
 };
