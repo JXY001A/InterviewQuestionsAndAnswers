@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-03 20:29:02
+ * @LastEditTime: 2019-11-03 21:22:28
  */
 /**
  * @ leetcode  三数之和
@@ -1646,4 +1646,64 @@ var longestConsecutive2 = function(nums) {
     });
     
     return longest;
+};
+
+
+/**
+ * @name leetcode 岛屿的最大面积
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maxAreaOfIsland = function(grid) {
+    let maxAreas = 0;
+    const mark = Infinity;
+    const yLength = grid.length;
+    const xLength = grid[0].length;
+    // 四个搜索的方向
+    const dir = [
+        // 上
+        {
+            x:0,
+            y:-1
+        },
+        // 右
+        {
+            x:1,
+            y:0
+        },
+        // 下
+        {
+            x:0,
+            y:1
+        },
+        // 左
+        {
+            x:-1,
+            y:0
+        }
+    ];
+    
+    const findIsland = (i,j,count)=>{
+        if(i<0 || i>=yLength || j<0 || j>=xLength || grid[i][j]!==1) return count;
+        
+        count+=1;
+        grid[i][j] = mark;
+        
+        dir.forEach(({x,y})=>{
+            count = findIsland(i+y,j+x,count);
+        });
+        
+        return count;
+    }
+    
+    for(let i=0;i<yLength;i+=1) {
+        for(let j=0;j<xLength;j+=1) {
+            if(grid[i][j] !== 1) continue;
+            const size = findIsland(i,j,0);
+            
+            maxAreas = Math.max(maxAreas,size);
+        }
+    }
+    
+    return maxAreas;
 };
