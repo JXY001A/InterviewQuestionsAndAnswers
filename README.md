@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-28 13:53:11
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-03 21:27:30
+ * @LastEditTime: 2019-11-05 17:56:57
  -->
 
 # InterviewQuestionsAndAnswers
@@ -113,6 +113,7 @@
 44. [leetcode 最长连续序列-初级版本](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/0003a7d09d355fc32def981b504a3ad80e6d0269/src/leetcodeMedium.js#L1592)
 45. [leetcode 最长连续序列-进阶版本优化](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/0003a7d09d355fc32def981b504a3ad80e6d0269/src/leetcodeMedium.js#L1629)
 46. [leetcode 岛屿的最大面积](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/ff36e9bbf444cb316e32375363122b487114b8a9/src/leetcodeMedium.js#L1657)
+47. [leetcode 简化路径](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/0200d8abd51038e84c63679fa7d6b1a31b7fda2d/src/leetcodeMedium.js#L1718)
 ## 数据结构
 1. [堆-最大堆](https://github.com/JXY001A/InterviewQuestionsAndAnswers/blob/bd1fa32de8e3c27b2134a623ccdc84847e10b806/src/maxHeap.js#L9)
 ## CSS 相关
