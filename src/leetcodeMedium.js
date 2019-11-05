@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-03 21:22:28
+ * @LastEditTime: 2019-11-05 17:54:53
  */
 /**
  * @ leetcode  三数之和
@@ -1706,4 +1706,31 @@ var maxAreaOfIsland = function(grid) {
     }
     
     return maxAreas;
+};
+
+
+/**
+ * @name leetcode 岛屿的最大面积
+ * @param {string} path
+ * @return {string}
+ * @desc 使用栈来解决，['','.'] 直接过，'..' 出栈，其他入栈，最后输出栈就可以了
+ */
+var simplifyPath = function(path) {
+    const noEffects = ['','.'];
+    const out = '..';
+    
+    const pathList = path.split('/')
+    const stack = [];
+    
+    for(let i=0;i<pathList.length;i+=1) {
+        const char = pathList[i];
+        if(noEffects.includes(char)) continue;
+        if(out === char) {
+            stack.pop()
+        }else{
+            stack.push(char);
+        }
+    }
+    
+    return '/' + stack.join('/');
 };
