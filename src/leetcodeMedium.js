@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-05 17:56:23
+ * @LastEditTime: 2019-11-06 23:32:41
  */
 /**
  * @ leetcode  三数之和
@@ -1733,4 +1733,103 @@ var simplifyPath = function(path) {
     }
     
     return '/' + stack.join('/');
+};
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @name leetcode 排序链表
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 自己实现，效率极低 o(╥﹏╥)o
+var sortList = function(head) {
+    if(!head) return null;
+    
+    let newHeader = head;
+    head = head.next;
+    
+    newHeader.next = null;
+    
+    while(head) {
+        const tempNode = head;
+        head = head.next;
+        tempNode.next = null;
+        
+        if(newHeader.val > tempNode.val) {
+            tempNode.next = newHeader;
+            newHeader = tempNode;
+        } else{
+            let tempSortNode = newHeader;
+            while(tempSortNode.next) {
+                if(tempSortNode.next.val > tempNode.val ) {
+                    let next = tempSortNode.next;
+                    tempSortNode.next = tempNode;
+                    tempNode.next = next;
+                    break;
+                }else{
+                    tempSortNode = tempSortNode.next;
+                }
+            }
+            tempSortNode.next = tempNode;
+        }
+    }
+    
+    return newHeader;
+};
+
+
+/**
+ * @name leetcode 排序链表
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 查资料实现，使用归并算法
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
+
+var sortList = function(head) {
+    if(head === null || head.next === null) return  head;
+    
+    let fast =  head.next;
+    let slow =  head;
+    // 关键代码，获取中心链表的中点
+    while(fast !== null && fast.next !== null ) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    let left  = head;
+    let right = slow.next;
+    // 从传入的链表中间断开
+    slow.next = null;
+    
+    left = sortList(left);
+    right = sortList(right);
+    
+    let tempHeader = new ListNode(0);
+    let th = tempHeader;
+    // merge 过程，注意两种特殊情况 即:left 或者 right 为空的时候，直接将存在的哪一个拼接起来就完成了，无需循环
+    while(right !==null && left!==null) {
+        if(right.val > left.val) {
+            th.next = left;
+            left = left.next;
+        }else{
+            th.next = right;
+            right = right.next;
+        }
+        th = th.next;
+    }
+    th.next = left === null ? right:left;
+    
+    return  tempHeader.next;
+    
 };
