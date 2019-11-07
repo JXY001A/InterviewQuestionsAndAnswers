@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-06 23:32:41
+ * @LastEditTime: 2019-11-07 10:41:18
  */
 /**
  * @ leetcode  三数之和
@@ -1832,4 +1832,46 @@ var sortList = function(head) {
     
     return  tempHeader.next;
     
+};
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @name leetcode 合并K个排序链表
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+var mergeKLists = function(lists) {
+    if(lists.length===0) return null;
+    if(lists.length===1) return lists[0];
+    
+    let sortedHead = lists.pop();
+    let header;
+    
+    while(lists.length > 0) {
+         header = {val:null,next:null};
+        let h = header;
+        
+        let tempHead = lists.pop();
+        while(sortedHead !== null && tempHead !== null) {
+             if(sortedHead.val > tempHead.val) {
+                 h.next = tempHead;
+                 tempHead = tempHead.next; 
+             }else{
+                 h.next = sortedHead;
+                 sortedHead = sortedHead.next; 
+             }
+             h = h.next;
+        }
+        h.next = tempHead === null ? sortedHead : tempHead;
+        
+        sortedHead = header.next;
+    }
+    return header.next;
 };
