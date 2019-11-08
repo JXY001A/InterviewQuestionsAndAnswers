@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-07 10:41:18
+ * @LastEditTime: 2019-11-08 13:33:06
  */
 /**
  * @ leetcode  三数之和
@@ -1874,4 +1874,68 @@ var mergeKLists = function(lists) {
         sortedHead = header.next;
     }
     return header.next;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @name leetcode 环形链表 II
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// map 实现
+var detectCycle = function(head) {
+    if(head === null || head.next === null)  return null;
+    const nodeMap = new Map();
+    while(head !== null) {
+        if(!nodeMap.has(head)) {
+            nodeMap.set(head,true);
+            head = head.next;
+        }else{
+            return head;
+        }
+        
+    }
+    return null;
+};
+
+// 循环算法实现
+var detectCycle = function(head) {
+    /*
+        假设非环部分的长度是x，从环起点到相遇点的长度是y。环的长度是c。
+        现在走的慢的那个指针走过的长度肯定是x+n1*c+y，走的快的那个指针的速度是走的慢的那个指针速度的两倍。这意味着走的快的那个指针走的长度是2(x+n1*c+y)。
+
+        还有一个约束就是走的快的那个指针比走的慢的那个指针多走的路程一定是环长度的整数倍。根据上面那个式子可以知道2(x+n1*c+y)-x+n1*c+y=x+n1*c+y=n2*c。
+
+        所以有x+y=(n2-n1)*c,这意味着什么？我们解读下这个数学公式：非环部分的长度+环起点到相遇点之间的长度就是环的整数倍。这在数据结构上的意义是什么？
+        现在我们知道两个指针都在离环起点距离是y的那个相遇点，而现在x+y是环长度的整数倍，这意味着他们从相遇点再走x距离就刚刚走了很多圈，这意味着他们如果从相遇点再走x就到了起点。
+        那怎么才能再走x步呢？答：让一个指针从头部开始走，另一个指针从相遇点走，等这两个指针相遇那就走了x步此时就是环的起点。
+
+    */
+    if(head === null || head.next === null)  return null;
+    let fast = head,slow = head;
+    while(true) {
+        // 说明没有循环
+        if(fast == null ||  fast.next === null) return null;
+        fast = fast.next.next;
+        slow = slow.next;
+        if(fast === slow) {
+            // 此时 fast 已经追上slow ,说明 slow 已经在环中 
+            break;
+        }
+    }
+    
+    fast =  head;
+    while(fast !== slow) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+    
+    return fast;
 };
