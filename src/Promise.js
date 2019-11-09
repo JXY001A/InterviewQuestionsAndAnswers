@@ -77,6 +77,14 @@ function doReject(self,error) {
     return self;
 }
 
+function getThen(obj) {
+    var then = obj && obj.then;
+    if(obj && (isObject(obj) || isFunction(obj)) && isFunction(then)) {
+        return function appyThen() {
+            then.apply(obj,arguments);
+        }
+    }
+}
 
 function Promise(resolver) {
     if(!isFunction(resolver)) {
@@ -93,8 +101,64 @@ function Promise(resolver) {
 }
 
 
-Promise.prototype.then = function() {}
-Promise.prototype.catch = function() {}
+Promise.prototype.then = function(onFulfilled,onRejected) {
+    if(!isFunction(onFulfilled) && this.state === FULFILLED || !isFunction(onRejected) && this.state === REJECTED) {
+        return this;
+    }
+    var promise = new this.constructor(INTERNAL);
+    if(this.state !== PENDING) {
+        var reslover = this.state === FULFILLED? onFulfilled:onRejected;
+        unwrap(promise,reslover,this.value);
+    }else{
+        this.queue.push(new QueueItem(promise,onFulfilled,onRejected));
+    }
+
+    return promise;
+}
+
+Promise.prototype.catch = function(onRejected) {
+    return this.then(null,onRejected);
+}
+
+function unwrap(promise,func,value) {
+    immediate(function() {
+        var returnVal;
+        try {
+            returnVal = func(value);
+        } catch (error) {
+            doReject(promise,error);
+        }
+        if(returnVal === promise) {
+            doReject(promise, new TypeError('Cannot resolve promise with itself'));
+        }else{
+            doReject(promise, returnVal);
+        }
+    });
+}
+
+function QueueItem(promise, onFulfilled, onRejected) {
+    this.promise = promise;
+    this.callFulfilled = function (value) {
+      doResolve(this.promise, value);
+    };
+
+    this.callRejected = function (error) {
+      doReject(this.promise, error);
+    };
+
+    if (isFunction(onFulfilled)) {
+      this.callFulfilled = function (value) {
+        unwrap(this.promise, onFulfilled, value);
+      };
+    }
+    
+    if (isFunction(onRejected)) {
+      this.callRejected = function (error) {
+        unwrap(this.promise, onRejected, error);
+      };
+    }
+  }
+
 
 Promise.prototype.resolve = function() {}
 Promise.prototype.reject = function() {}

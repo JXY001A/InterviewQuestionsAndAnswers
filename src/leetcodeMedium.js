@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-08 13:33:06
+ * @LastEditTime: 2019-11-09 14:07:17
  */
 /**
  * @ leetcode  三数之和
@@ -1938,4 +1938,42 @@ var detectCycle = function(head) {
     }
     
     return fast;
+};
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * leetcode 二叉树的最近公共祖先
+ * @param {TreeNode} root
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {TreeNode}
+ */
+var lowestCommonAncestor = function(root, p, q) {
+    let parentRoot = null;
+    
+    function diff(current,p,q) {
+        if(current === null) return false;
+        
+        const left  =  diff(current.left, p,q)  ? 1 : 0;
+        const right =  diff(current.right,p,q) ? 1 : 0;
+        
+        let mid = 0;
+        if(current === p || current === q) {
+            mid = 1;
+        }
+        
+        if(left + mid + right >= 2) {
+            parentRoot = current;
+        }
+        
+        return (left + mid + right) > 0;
+    }
+    diff(root, p, q);
+    return parentRoot;
 };
