@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-09 14:07:17
+ * @LastEditTime: 2019-11-09 14:15:37
  */
 /**
  * @ leetcode  三数之和
@@ -1958,7 +1958,7 @@ var lowestCommonAncestor = function(root, p, q) {
     let parentRoot = null;
     
     function diff(current,p,q) {
-        if(current === null) return false;
+        if(current === null || parentRoot !== null) return false;
         
         const left  =  diff(current.left, p,q)  ? 1 : 0;
         const right =  diff(current.right,p,q) ? 1 : 0;
@@ -1967,13 +1967,14 @@ var lowestCommonAncestor = function(root, p, q) {
         if(current === p || current === q) {
             mid = 1;
         }
-        
-        if(left + mid + right >= 2) {
+        // 等于 2：当前节点的左子树可能包含 p 或 q，右子树可能包含 p 或 q。
+        if(left + mid + right == 2) {
             parentRoot = current;
         }
         
         return (left + mid + right) > 0;
     }
+
     diff(root, p, q);
     return parentRoot;
 };
