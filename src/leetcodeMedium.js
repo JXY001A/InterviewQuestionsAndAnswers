@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-09 14:15:37
+ * @LastEditTime: 2019-11-12 23:31:09
  */
 /**
  * @ leetcode  三数之和
@@ -1948,7 +1948,7 @@ var detectCycle = function(head) {
  * }
  */
 /**
- * leetcode 二叉树的最近公共祖先
+ * @name leetcode 二叉树的最近公共祖先
  * @param {TreeNode} root
  * @param {TreeNode} p
  * @param {TreeNode} q
@@ -1977,4 +1977,38 @@ var lowestCommonAncestor = function(root, p, q) {
 
     diff(root, p, q);
     return parentRoot;
+};
+
+/**
+ * @name leetcode 复原IP地址
+ * @param {string} s
+ * @return {string[]}
+ */
+var restoreIpAddresses = function(s) {
+    let result = [];
+    const FLAG = 4;
+    const len = s.length;
+    
+    const dfs = (i,temp,flag,result)=>{
+        if(flag > FLAG) return;
+        if(i === len && flag === FLAG) {
+            result.push(temp.substring(0,temp.length-1));
+            return;
+        }
+        
+        for(let j=i;j<i+3;j+=1) {
+            if(j<len) {
+                if(i===j && s.charAt(j) === '0') {
+                    dfs( j+1, `${temp}${s.substring(i,j+1)}.`, flag+1,result);
+                    break;
+                }
+                if(parseInt(s.substring(i,j+1),10) <= 255) {
+                    dfs( j+1, `${temp}${s.substring(i,j+1)}.`, flag+1,result);        
+                }
+            }
+        }
+    }
+    
+    dfs(0,'',0,result);
+    return result;
 };
