@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-12 23:31:09
+ * @LastEditTime: 2019-11-15 23:24:09
  */
 /**
  * @ leetcode  三数之和
@@ -2011,4 +2011,55 @@ var restoreIpAddresses = function(s) {
     
     dfs(0,'',0,result);
     return result;
+};
+
+
+/**
+ * @name leetcode 有效的数独
+ * @param {character[][]} board
+ * @return {boolean}
+ */
+var isValidSudoku = function(board) {
+    const columns = [];
+    const rows = [];
+    const bucket = [];
+    
+    for(let i=0;i<9;i+=1) {
+        columns[i] = {};
+        rows[i] = {};
+        bucket[i] = {};
+    }
+
+    for(let i=0;i<9;i+=1) { 
+        for(let j=0;j<9;j+=1) {
+            if(board[i][j] === '.') continue;
+            
+            const n  =  board[i][j];
+
+            // 处理 列
+            if(columns[j][n] !== undefined) {
+                return false;
+            }else{
+                columns[j][n] = true;
+            }  
+
+            // 处理 行
+            if(rows[i][n] !== undefined) {
+                return false;
+            }else{
+                rows[i][n] = true;
+            }
+
+            // 处理  3*3  矩阵
+            // 计算 当前数字属于 9 个数独中的哪一个 
+            let bucketIndex = parseInt(i/3,10) * 3 + parseInt(j/3,10);
+
+            if(bucket[bucketIndex][n] !== undefined) {
+                return false;
+            }else{
+                bucket[bucketIndex][n] = true;
+            }  
+        }
+    }
+    return true;
 };
