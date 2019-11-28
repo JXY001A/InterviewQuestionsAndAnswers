@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-15 23:24:09
+ * @LastEditTime: 2019-11-28 23:43:17
  */
 /**
  * @ leetcode  三数之和
@@ -195,6 +195,28 @@ var lengthOfLongestSubstring2 = function(s) {
     }
     
     return   max_len;
+};
+
+// 优化三：使用索引位置
+var lengthOfLongestSubstring = function(s) {
+    if(s.length === 1) return 1;
+    let maxSubLen = 0;
+    let begin = 0 , end = 0;
+    let i=0;
+    
+    while(i<s.length) {
+        const curr = s.charAt(i);
+        const repeatIndex = s.slice(begin,end).indexOf(curr); 
+        if(repeatIndex !== -1) {
+            maxSubLen = Math.max(maxSubLen , end-begin);
+            begin = begin + repeatIndex + 1;
+            end = i+1;
+        }else{
+            end+=1;
+        }
+        i+=1;
+    }
+    return Math.max(maxSubLen , end-begin);
 };
 
 /**
@@ -2063,3 +2085,4 @@ var isValidSudoku = function(board) {
     }
     return true;
 };
+
