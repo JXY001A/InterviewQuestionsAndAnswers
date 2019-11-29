@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-28 23:43:17
+ * @LastEditTime: 2019-11-29 13:54:10
  */
 /**
  * @ leetcode  三数之和
@@ -2086,3 +2086,29 @@ var isValidSudoku = function(board) {
     return true;
 };
 
+
+/**
+ * @name 最长回文子串-中心扩展算法
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    if(s.length === 1) return s;
+    let logestPal = '';
+    for(let i=0;i<s.length;i+=1) {
+        let left = i,
+            right = i;
+        const curr = s.charAt(i); 
+        while(curr === s.charAt(right+1)) right+=1;
+        while(curr === s.charAt(left-1))  left-=1;
+
+        while(s.charAt(right+1) === s.charAt(left-1) && s.charAt(left-1) !== '') {
+            left-=1;
+            right+=1;
+        }
+
+
+        logestPal = logestPal.length > (right-left+1) ? logestPal : s.slice(left,right+1);
+    }
+    return logestPal;
+};
