@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-12-01 17:04:16
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-12-01 17:47:44
+ * @LastEditTime: 2019-12-01 17:52:37
  */
 
 // 短时间内进入大量任务，为每个认为有开启定时器，后一个覆盖前一个，直到在设定的延迟时间内没有新任务进入的时候，当前定时器的任务就会执行
@@ -51,6 +51,34 @@ const throttleDebounce = (fn,delay)=>{
             // 如果时间间隔超出了我们设定的时间间隔阈值，那就不等了，无论如何要反馈给用户一次响应
             fn.apply(context,args);
             last = now;
+            clearTimeout(timer);
         }
     }
 }
+
+/* 防抖于懒加载结合 */
+const lazyload = ()=>{
+    // 获取所有的图片标签
+    const imgs = document.getElementsByTagName('img');
+    // 获取可视区域的高度
+    const viewHeight = window.innerHeight || document.documentElement.clientHeight
+    // num用于统计当前显示到了哪一张图片，避免每次都从第一张图片开始检查是否露出
+    let num = 0;
+    return function (){
+        for(let i=num; i<imgs.length; i++) {
+            // 用可视区域高度减去元素顶部距离可视区域顶部的高度
+            let distance = viewHeight - imgs[i].getBoundingClientRect().top
+            // 如果可视区域高度大于等于元素顶部距离可视区域顶部的高度，说明元素露出
+            if(distance >= 0 ){
+                // 给元素写入真实的src，展示图片
+                imgs[i].src = imgs[i].getAttribute('data-src')
+                // 前i张图片已经加载完毕，下次从第i+1张开始检查是否露出
+                num = i + 1
+            }
+        }
+    }
+}
+
+
+const scroll_best = throttleDebounce(lazyload(),500);
+window.addEventListener('scroll',scroll_best);
