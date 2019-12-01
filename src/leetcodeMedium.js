@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-09-18 22:15:38
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-11-29 13:54:10
+ * @LastEditTime: 2019-12-01 12:12:45
  */
 /**
  * @ leetcode  三数之和
@@ -2111,4 +2111,35 @@ var longestPalindrome = function(s) {
         logestPal = logestPal.length > (right-left+1) ? logestPal : s.slice(left,right+1);
     }
     return logestPal;
+};
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @name 相交链表优化
+ * @param {ListNode} headA
+ * @param {ListNode} headB
+ * @return {ListNode}
+ */
+var getIntersectionNode = function(headA, headB) {
+    // listA = [4,1,8,4,5], listB = [5,0,1,8,4,5] 为例
+    // Alength = 5 , Blength = 6
+    // 相交于 ：8 
+    // 两次循环刚好减去多余出来的部分，也就相当于从 (Blength - Alength) 的索引为止开始循环对比
+    let hA = headA,
+        hB = headB;
+        
+    while(hA !== hB) {
+        hA = hA===null? headB : hA.next;
+        hB = hB===null? headA : hB.next;
+    }
+    
+    return hA;
 };
