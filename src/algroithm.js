@@ -1472,3 +1472,25 @@ var isValid = function(s) {
     }
     return listStack.length === 0;
 };
+
+/**
+ * @param {number[][]} intervals
+ * @return {number[][]}
+ */
+var mergePro = function(intervals) {
+    if(intervals.length ===0) return  intervals;
+    intervals.sort((a,b)=>a[0]-b[0]);
+    return intervals.reduce((accumulate,next,index)=>{
+        const prev = accumulate[accumulate.length-1];
+        if(prev === undefined)  {
+            accumulate.push(next);
+        }else{
+            if(prev[1]<next[0]) {
+                accumulate.push(next);
+            }else{
+               accumulate[accumulate.length-1] = [Math.min(prev[0],next[0]),Math.max(prev[1],next[1])];
+            }
+        }
+        return accumulate;
+    },[]);
+};
