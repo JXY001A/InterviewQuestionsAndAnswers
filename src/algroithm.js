@@ -1494,3 +1494,39 @@ var mergePro = function(intervals) {
         return accumulate;
     },[]);
 };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+// 搜索旋转排序数组
+var search = function(nums, target) {
+    function _search(l,r,nums,target) {
+        if(l>r) return -1;
+
+        const mid = Math.floor((l+r)/2);
+        
+        if(nums[mid]=== target) return mid;
+
+        if(nums[mid] === nums[l]) return _search(mid+1,r,nums,target);
+
+        if(nums[mid] > nums[l]) {
+            // [l,mid] 有序
+            if(nums[mid]>target && nums[l]<=target) {
+                return _search(l,mid-1,nums,target);
+            }else{
+                return _search(mid+1,r,nums,target);
+            }
+        }else{
+            // [mid,r] 有序
+            if(nums[mid]<target && nums[r]>=target) {
+                return _search(mid+1,r,nums,target);
+            }else{
+                return _search(l,mid-1,nums,target);
+            }
+        }
+    }
+    return _search(0,nums.length-1,nums,target);
+};
