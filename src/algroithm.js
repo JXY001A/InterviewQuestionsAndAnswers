@@ -1502,6 +1502,11 @@ var mergePro = function(intervals) {
  * @return {number}
  */
 // 搜索旋转排序数组
+// 思路：其实很简单，就是一个二分搜索，不同点在于，每次进入的时候需要清除的知道，[l,mid] 以及 [mid,r] 两个区间那个是有序的，那个包含旋转点，分清楚这一点，即可解题
+// 关键的坑点：
+// 1. 假如 [l,mid] 有序，且 nums[mid] > target，不能直接就进去搜索，需要判断 nums[l] < target 。也就是判断 target 是否确定就在这个 有序的区间上。简而言之：当我们知道一个区间有序，那么我们就
+// 能确定的知道 target 就在这个区间上。否则搜索另外一个区间
+// 2. 就是 nums[mid] === nums[l] 其实 不等于 target, 那就意味着 [l,mid] 区间不需要搜索了。  
 var search = function(nums, target) {
     function _search(l,r,nums,target) {
         if(l>r) return -1;
