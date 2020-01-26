@@ -1308,6 +1308,28 @@ var rob = function(nums) {
 };
 
 /**
+ * @name leecode 打家劫舍
+ * @param {number[]} nums
+ * @return {number}
+*/
+// 新思路： 
+// 当 i>3 时，dp[i] = nums[i] + Math.max(dp[i-2],dp[i-1]);
+// 当 i<3 时，dp[i] = nums[i] || nums[i]+ dp[0];
+var rob = function(nums) {
+    const dp = [];
+    let maxMoney = 0;
+    for(let i=0;i<nums.length;i+=1) {
+        if(i<3) {
+            dp[i] = nums[i] + (i-2 >= 0 ? dp[i-2] : 0);
+        }else{
+            dp[i] = nums[i] + Math.max(dp[i-2],dp[i-3]);
+        } 
+        maxMoney = Math.max(maxMoney,dp[i]);
+    }
+    return maxMoney;
+};
+
+/**
  * @name leecode 计数质数
  * @param {number} n
  * @return {number}
